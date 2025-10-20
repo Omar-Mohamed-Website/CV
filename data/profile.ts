@@ -86,13 +86,19 @@ export const profile: Profile = {
 
   experience: [
     {
-      company: 'bright Stars Academy',
+      company: 'Bright Stars Academy',
       role: 'English Teacher Assistant',
-      start: '2024',
-      end: '2025',
+      start: '2024-01',
+      end: '2025-01',
       description:
-        'Assisted in delivering engaging English lessons for children aged 4–10; supported classroom activities with games, songs, storytelling; helped manage classroom behavior; collaborated with senior teachers to adapt materials; encouraged student confidence through routines and group activities.',
-      technologies: ['Teaching', 'Classroom Management', 'Lesson Planning'],
+        "Assisted in planning and delivering engaging English lessons for children aged 4–10, focusing on communication skills, vocabulary building, and pronunciation. Supported classroom activities through games, songs, storytelling, and creative exercises to make learning enjoyable and interactive. Helped manage classroom behavior and maintained a positive, encouraging learning environment. Collaborated with senior teachers to adapt materials and teaching methods for different learning styles and levels. Encouraged students' confidence in speaking English through daily routines and group activities.",
+      technologies: [
+        'Teaching',
+        'Classroom Management',
+        'Lesson Planning',
+        'Communication Skills',
+        'Vocabulary Building',
+      ],
     },
     {
       company: 'YouTube - English with Omar',
@@ -137,10 +143,10 @@ export const profile: Profile = {
     {
       school: 'Worls TESOL Academy',
       degree: '120-Hour TESOL / TEFL Certificate',
-      start: '2025',
-      end: '2025',
+      start: '2025-01',
+      end: '2025-03',
       description:
-        'Completed TESOL/TEFL training in London, UK focused on pedagogy, classroom management, and practical teaching methodologies.',
+        'Completed comprehensive 120-hour TESOL/TEFL certification training in London, UK. Focused on pedagogy, classroom management, lesson planning, and practical teaching methodologies for teaching English as a second language.',
     },
     {
       school: 'Martyr Colonel Ahmed Jaber Nassar Secondary School for Boys A',
@@ -148,7 +154,7 @@ export const profile: Profile = {
       start: '2022-09',
       end: 'Present',
       description:
-        'Currently pursuing high school education with focus on developing time management, research skills, communication, teamwork, leadership, and computer literacy.',
+        'Currently pursuing high school education with focus on developing time management, research skills, communication, teamwork, leadership, and computer literacy. Maintaining strong academic performance while engaging in extracurricular activities.',
     },
     {
       school: 'Abdul Latif Hassanein Preparatory School',
@@ -208,7 +214,7 @@ export const profile: Profile = {
     {
       name: '120-Hour TESOL / TEFL Certificate',
       issuer: 'Worls TESOL Academy',
-      date: '2025',
+      date: '2025-03',
     },
     {
       name: '3rd Place - III Chess Tournament LKS "START" Wola Mielecka',
@@ -217,22 +223,22 @@ export const profile: Profile = {
     },
     {
       name: '2nd Place - Tournament No. 5, 10th Edition Mielec School Chess League 2024 (Boys U19)',
-      issuer: 'SDK-Lotnik',
+      issuer: 'Mielec School Chess League - SDK-Lotnik',
       date: '2024-06-15',
     },
     {
       name: '3rd Place - Tournament No. 4, 10th Edition Mielec School Chess League 2024 (Boys U19)',
-      issuer: 'SDK-Lotnik',
+      issuer: 'Mielec School Chess League - SDK-Lotnik',
       date: '2024-05-16',
     },
     {
       name: '4th Place - General Classification, Mielec School Chess League 2024/2025 (Boys U19)',
-      issuer: 'SDK-Lotnik',
-      date: '2025-04-26',
+      issuer: 'Mielec School Chess League - SDK-Lotnik',
+      date: '2024-06-30',
     },
     {
       name: '3rd Place - Tournament No. 2, 10th Edition Mielec School Chess League 2024 (Boys U19)',
-      issuer: 'SDK-Lotnik',
+      issuer: 'Mielec School Chess League - SDK-Lotnik',
       date: '2024-03-16',
     },
     {
