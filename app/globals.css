@@ -116,22 +116,19 @@
   }
 
   .card {
-    @apply rounded-xl border border-neutral-200 bg-white/75 p-5 shadow-xl backdrop-blur-2xl transition-all duration-200 hover:shadow-2xl dark:border-primary-400/20 dark:bg-slate-900/90 dark:shadow-black/50 sm:p-6;
+    @apply rounded-xl border border-neutral-200/60 bg-white/80 p-5 shadow-lg backdrop-blur-xl transition-all duration-300 hover:border-neutral-200 hover:shadow-xl dark:border-white/10 dark:bg-slate-900/80 dark:shadow-2xl dark:shadow-black/40 sm:p-6;
+    background-image: linear-gradient(
+      to bottom right,
+      rgba(255, 255, 255, 0.9),
+      rgba(255, 255, 255, 0.7)
+    );
   }
 
   .dark .card {
     background-image: linear-gradient(
       to bottom right,
-      rgba(2, 81, 89, 0.15),
-      rgba(1, 37, 42, 0.2)
-    );
-  }
-
-  .card:not(.dark .card) {
-    background-image: linear-gradient(
-      to bottom right,
-      rgba(255, 255, 255, 0.6),
-      rgba(255, 255, 255, 0.4)
+      rgba(15, 23, 42, 0.85),
+      rgba(2, 6, 23, 0.9)
     );
   }
 
@@ -169,26 +166,36 @@
 /* Glass utilities and liquid background */
 @layer utilities {
   .glass {
-    @apply rounded-xl border border-neutral-200 bg-white/65 backdrop-blur-2xl dark:border-primary-400/20 dark:bg-slate-900/85;
+    @apply rounded-xl border border-white/20 bg-white/70 backdrop-blur-xl dark:border-white/10 dark:bg-slate-900/75;
+    background-image: linear-gradient(
+      to bottom right,
+      rgba(255, 255, 255, 0.8),
+      rgba(255, 255, 255, 0.5)
+    );
   }
 
   .dark .glass {
     background-image: linear-gradient(
       to bottom right,
-      rgba(2, 81, 89, 0.2),
-      rgba(1, 23, 27, 0.3)
-    );
-  }
-
-  .glass:not(.dark .glass) {
-    background-image: linear-gradient(
-      to bottom right,
-      rgba(255, 255, 255, 0.5),
-      rgba(255, 255, 255, 0.35)
+      rgba(15, 23, 42, 0.8),
+      rgba(2, 6, 23, 0.85)
     );
   }
   .glass-strong {
-    @apply rounded-2xl border border-neutral-200 bg-white/50 shadow-xl backdrop-blur-2xl dark:border-primary-400/25 dark:bg-slate-950/95 dark:shadow-black/60;
+    @apply rounded-2xl border border-white/30 bg-white/60 shadow-xl backdrop-blur-2xl dark:border-white/10 dark:bg-slate-900/90 dark:shadow-2xl dark:shadow-black/50;
+    background-image: linear-gradient(
+      to bottom right,
+      rgba(255, 255, 255, 0.85),
+      rgba(255, 255, 255, 0.6)
+    );
+  }
+
+  .dark .glass-strong {
+    background-image: linear-gradient(
+      to bottom right,
+      rgba(15, 23, 42, 0.9),
+      rgba(2, 6, 23, 0.95)
+    );
   }
   /* Strobe animation for contact warning */
   @keyframes strobeBox {
