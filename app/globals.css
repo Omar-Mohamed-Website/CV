@@ -47,6 +47,7 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-variant-ligatures: common-ligatures;
+    overflow-x: hidden;
   }
 
   /* Focus styles for accessibility */

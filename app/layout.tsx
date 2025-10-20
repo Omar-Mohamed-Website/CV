@@ -29,8 +29,8 @@ export const metadata: Metadata = {
   creator: profile.name,
   keywords: profile.seo.keywords,
   icons: {
-    icon: '/favicon.ico',
-    shortcut: '/favicon.ico',
+    icon: '/icon.svg',
+    shortcut: '/icon.svg',
     apple: '/apple-icon',
   },
   openGraph: {
@@ -133,7 +133,9 @@ export default function RootLayout({
         >
           Skip to main content
         </a>
-        <div className="min-h-screen">{children}</div>
+        <div className="min-h-dvh pb-[env(safe-area-inset-bottom)] pt-[env(safe-area-inset-top)]">
+          {children}
+        </div>
       </body>
     </html>
   );

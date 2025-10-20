@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 
 import { profile } from '../data/profile';
 
@@ -157,6 +158,8 @@ const MobileMenu = ({
   onItemClick: (id: string) => void;
 }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const canPortal =
+    typeof window !== 'undefined' && typeof document !== 'undefined';
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
@@ -203,77 +206,90 @@ const MobileMenu = ({
         </svg>
       </button>
 
-      {/* Mobile Menu Overlay */}
-      {isOpen && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.2 }}
-          className="fixed inset-0 z-40 bg-black/30 backdrop-blur-sm md:hidden"
-          onClick={toggleMenu}
-        />
-      )}
-
-      {/* Mobile Menu Panel */}
-      <motion.div
-        initial={{ x: '100%' }}
-        animate={{ x: isOpen ? 0 : '100%' }}
-        transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-        className="glass-strong fixed right-0 top-0 z-50 h-full w-72 overflow-y-auto md:hidden"
-      >
-        <div className="flex h-full flex-col p-6">
-          <div className="mb-6 flex items-center justify-between border-b border-neutral-200 pb-4 dark:border-slate-800">
-            <h2 className="text-base font-semibold text-neutral-900 dark:text-neutral-100">
-              Menu
-            </h2>
-            <button
+      {/* Mobile Menu via portal to escape transformed ancestors */}
+      {isOpen &&
+        canPortal &&
+        createPortal(
+          <>
+            {/* Overlay */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="fixed inset-0 z-[90] bg-black/35 backdrop-blur-sm md:hidden"
               onClick={toggleMenu}
-              className="rounded-lg p-1.5 text-neutral-500 transition-colors duration-200 hover:bg-neutral-100 hover:text-neutral-700 focus:outline-none focus:ring-2 focus:ring-primary-400/50 dark:text-neutral-300 dark:hover:bg-slate-800 dark:hover:text-white"
-              aria-label="Close menu"
+            />
+
+            {/* Panel */}
+            <motion.div
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+              className="glass-strong fixed right-0 top-0 z-[100] h-dvh w-72 overflow-y-auto overscroll-contain pb-[env(safe-area-inset-bottom)] pt-[env(safe-area-inset-top)] md:hidden"
             >
-              <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
-                <path
-                  fillRule="evenodd"
-                  d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            </button>
-          </div>
+              <div className="flex h-full flex-col p-6">
+                <div className="mb-6 flex items-center justify-between border-b border-neutral-200 pb-4 dark:border-slate-800">
+                  <h2 className="text-base font-semibold text-neutral-900 dark:text-neutral-100">
+                    Menu
+                  </h2>
+                  <button
+                    onClick={toggleMenu}
+                    className="rounded-lg p-1.5 text-neutral-500 transition-colors duration-200 hover:bg-neutral-100 hover:text-neutral-700 focus:outline-none focus:ring-2 focus:ring-primary-400/50 dark:text-neutral-300 dark:hover:bg-slate-800 dark:hover:text-white"
+                    aria-label="Close menu"
+                  >
+                    <svg
+                      className="h-5 w-5"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  </button>
+                </div>
 
-          <nav
-            className="flex-1 space-y-1 overflow-y-auto"
-            role="navigation"
-            aria-label="Mobile navigation"
-          >
-            {navigationItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => handleItemClick(item.id)}
-                className={`block w-full rounded-lg px-3 py-2.5 text-left text-sm font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary-400/50 ${
-                  activeSection === item.id
-                    ? 'bg-primary-50 text-primary-600 dark:bg-primary-900/30 dark:text-primary-200'
-                    : 'text-neutral-700 hover:bg-neutral-50 hover:text-neutral-900 dark:text-neutral-200 dark:hover:bg-slate-800/70 dark:hover:text-white'
-                }`}
-                aria-current={activeSection === item.id ? 'page' : undefined}
-              >
-                {item.label}
-              </button>
-            ))}
-          </nav>
+                <nav
+                  className="flex-1 space-y-1 overflow-y-auto"
+                  role="navigation"
+                  aria-label="Mobile navigation"
+                >
+                  {navigationItems.map((item) => (
+                    <button
+                      key={item.id}
+                      onClick={() => handleItemClick(item.id)}
+                      className={`block w-full rounded-lg px-3 py-2.5 text-left text-sm font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary-400/50 ${
+                        activeSection === item.id
+                          ? 'bg-primary-50 text-primary-600 dark:bg-primary-900/30 dark:text-primary-200'
+                          : 'text-neutral-700 hover:bg-neutral-50 hover:text-neutral-900 dark:text-neutral-200 dark:hover:bg-slate-800/70 dark:hover:text-white'
+                      }`}
+                      aria-current={
+                        activeSection === item.id ? 'page' : undefined
+                      }
+                    >
+                      {item.label}
+                    </button>
+                  ))}
+                </nav>
 
-          <div className="space-y-3 border-t border-neutral-200 pt-4 dark:border-slate-800">
-            <div className="flex items-center justify-between rounded-lg bg-neutral-50 px-3 py-2.5 dark:bg-slate-800/70">
-              <span className="text-sm font-medium text-neutral-600 dark:text-neutral-300">
-                Theme
-              </span>
-              <ThemeToggle />
-            </div>
-            <ResumeDownload variant="mobile" />
-          </div>
-        </div>
-      </motion.div>
+                <div className="space-y-3 border-t border-neutral-200 pt-4 dark:border-slate-800">
+                  <div className="flex items-center justify-between rounded-lg bg-neutral-50 px-3 py-2.5 dark:bg-slate-800/70">
+                    <span className="text-sm font-medium text-neutral-600 dark:text-neutral-300">
+                      Theme
+                    </span>
+                    <ThemeToggle />
+                  </div>
+                  <ResumeDownload variant="mobile" />
+                </div>
+              </div>
+            </motion.div>
+          </>,
+          document.body
+        )}
     </>
   );
 };
