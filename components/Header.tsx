@@ -165,7 +165,6 @@ const MobileMenu = ({
     setIsOpen(false);
   };
 
-  // Close menu on scroll
   useEffect(() => {
     if (!isOpen) return;
 

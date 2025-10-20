@@ -1,25 +1,19 @@
-export function formatDateEU(input: string): string {
-  if (!input) return '';
-  const trimmed = input.trim();
-  if (/^present$/i.test(trimmed)) return 'Present';
+export function formatDateEU(dateString: string): string {
+  if (!dateString) return '';
 
-  // YYYY-MM-DD
-  if (/^\d{4}-\d{2}-\d{2}$/.test(trimmed)) {
-    const [y, m, d] = trimmed.split('-').map((s) => parseInt(s, 10));
-    const date = new Date(Date.UTC(y, m - 1, d));
-    // Use en-GB for DD/MM/YYYY
-    return new Intl.DateTimeFormat('en-GB').format(date);
+  if (/^\d{4}-\d{2}-\d{2}$/.test(dateString)) {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-GB');
   }
 
-  // YYYY-MM -> MM/YYYY
-  if (/^\d{4}-\d{2}$/.test(trimmed)) {
-    const [y, m] = trimmed.split('-');
-    return `${m}/${y}`;
+  if (/^\d{4}-\d{2}$/.test(dateString)) {
+    const [year, month] = dateString.split('-');
+    return `${month}/${year}`;
   }
 
-  // YYYY -> YYYY (already EU-friendly)
-  if (/^\d{4}$/.test(trimmed)) return trimmed;
+  if (/^\d{4}$/.test(dateString)) {
+    return dateString;
+  }
 
-  // Fallback: return as-is
-  return trimmed;
+  return dateString;
 }

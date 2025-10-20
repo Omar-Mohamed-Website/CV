@@ -50,9 +50,8 @@ describe('ExperienceTimeline Component', () => {
     profile.experience.forEach((exp) => {
       if (exp.technologies) {
         exp.technologies.forEach((tech) => {
-          // Multiple identical tech badges can appear; use getAllByText
-          const matches = screen.getAllByText(tech);
-          expect(matches.length).toBeGreaterThan(0);
+          const techBadges = screen.queryAllByText(tech);
+          expect(techBadges.length).toBeGreaterThan(0);
         });
       }
     });
