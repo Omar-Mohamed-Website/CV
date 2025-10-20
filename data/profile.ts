@@ -72,7 +72,7 @@ export interface Profile {
 }
 
 // Base path for GitHub Pages deployment
-const basePath = process.env.NODE_ENV === 'production' ? '/Omar-Mohamed' : '';
+const basePath = process.env.NODE_ENV === 'production' ? '/CV' : '';
 
 export const profile: Profile = {
   name: 'Omar Mohamed',

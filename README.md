@@ -22,4 +22,4 @@ npm run test         # Run tests
 
 ## Deployment
 
-The site is deployed on GitHub Pages at https://omar-mohamed-website.github.io/Omar-Mohamed/
+The site is deployed on GitHub Pages at https://omar-mohamed-website.github.io/CV/
