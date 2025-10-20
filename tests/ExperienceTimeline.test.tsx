@@ -3,13 +3,19 @@ import { describe, it, expect, vi } from 'vitest';
 
 import ExperienceTimeline from '../components/ExperienceTimeline';
 import { profile } from '../data/profile';
+import { formatDateEU } from '@/lib/date';
 
 /* eslint-disable @typescript-eslint/no-unused-vars, no-unused-vars */
 vi.mock('framer-motion', () => ({
   motion: {
-    div: ({ children, whileHover: _h, whileTap: _t, layoutId: _l, whileInView: _w, ...props }: any) => (
-      <div {...props}>{children}</div>
-    ),
+    div: ({
+      children,
+      whileHover: _h,
+      whileTap: _t,
+      layoutId: _l,
+      whileInView: _w,
+      ...props
+    }: any) => <div {...props}>{children}</div>,
   },
 }));
 /* eslint-enable @typescript-eslint/no-unused-vars, no-unused-vars */
@@ -21,7 +27,7 @@ describe('ExperienceTimeline Component', () => {
     expect(screen.getByText('Work Experience')).toBeInTheDocument();
     expect(
       screen.getByText(
-        'Professional journey through cybersecurity and development roles'
+        'Teaching and content creation across YouTube, Telegram, and TikTok'
       )
     ).toBeInTheDocument();
   });
@@ -32,7 +38,8 @@ describe('ExperienceTimeline Component', () => {
     profile.experience.forEach((exp) => {
       expect(screen.getByText(exp.role)).toBeInTheDocument();
       expect(screen.getByText(exp.company)).toBeInTheDocument();
-      expect(screen.getByText(`${exp.start} - ${exp.end}`)).toBeInTheDocument();
+      const dateRange = `${formatDateEU(exp.start)} - ${formatDateEU(exp.end)}`;
+      expect(screen.getByText(dateRange)).toBeInTheDocument();
       expect(screen.getByText(exp.description)).toBeInTheDocument();
     });
   });
@@ -43,7 +50,9 @@ describe('ExperienceTimeline Component', () => {
     profile.experience.forEach((exp) => {
       if (exp.technologies) {
         exp.technologies.forEach((tech) => {
-          expect(screen.getByText(tech)).toBeInTheDocument();
+          // Multiple identical tech badges can appear; use getAllByText
+          const matches = screen.getAllByText(tech);
+          expect(matches.length).toBeGreaterThan(0);
         });
       }
     });
@@ -139,7 +148,7 @@ describe('ExperienceTimeline Component', () => {
     render(<ExperienceTimeline />);
 
     profile.experience.forEach((exp) => {
-      const dateRange = `${exp.start} - ${exp.end}`;
+      const dateRange = `${formatDateEU(exp.start)} - ${formatDateEU(exp.end)}`;
       expect(screen.getByText(dateRange)).toBeInTheDocument();
     });
   });

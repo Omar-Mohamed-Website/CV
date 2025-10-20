@@ -77,7 +77,8 @@ const ContactForm = () => {
       >
         <h2 className="section-heading">Get In Touch</h2>
         <p className="section-subheading">
-          Questions about English lessons, collaborations, or content? Let’s connect.
+          Questions about English lessons, collaborations, or content? Let’s
+          connect.
         </p>
       </motion.div>
 
@@ -95,7 +96,10 @@ const ContactForm = () => {
               Let&apos;s Start a Conversation
             </h3>
             <p className="mb-8 leading-relaxed text-neutral-700 dark:text-neutral-300">
-              Whether you’re looking for English tutoring, have a learning idea in mind, or just want to connect, I’d love to hear from you. I’m always open to opportunities and collaborations in education and content creation.
+              Whether you’re looking for English tutoring, have a learning idea
+              in mind, or just want to connect, I’d love to hear from you. I’m
+              always open to opportunities and collaborations in education and
+              content creation.
             </p>
 
             <div className="contact-info space-y-6">

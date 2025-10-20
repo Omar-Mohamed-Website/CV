@@ -24,7 +24,7 @@ const Projects = () => {
         </p>
       </motion.div>
 
-  <div className="projects-grid grid gap-8 md:grid-cols-2">
+      <div className="projects-grid grid gap-8 md:grid-cols-2">
         {profile.projects.map((project, index) => (
           <motion.div
             key={index}
@@ -63,14 +63,15 @@ const Projects = () => {
                 </p>
 
                 {/* Real-time stats */}
-                {project.demo && /youtube\.com|youtu\.be/.test(project.demo) && (
-                  <div className="mb-4 rounded-lg bg-neutral-50 p-3 dark:bg-neutral-800">
-                    <SocialStats
-                      platform="youtube"
-                      youtubeHandle="@english_with_omarr"
-                    />
-                  </div>
-                )}
+                {project.demo &&
+                  /youtube\.com|youtu\.be/.test(project.demo) && (
+                    <div className="mb-4 rounded-lg bg-neutral-50 p-3 dark:bg-neutral-800">
+                      <SocialStats
+                        platform="youtube"
+                        youtubeHandle="@english_with_omarr"
+                      />
+                    </div>
+                  )}
                 {project.demo && /(^|\.)t\.me\//.test(project.demo) && (
                   <div className="mb-4 rounded-lg bg-neutral-50 p-3 dark:bg-neutral-800">
                     <SocialStats

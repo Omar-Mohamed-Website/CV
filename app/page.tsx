@@ -16,7 +16,7 @@ export default function HomePage() {
     <>
       <Header />
 
-  <main id="main-content" className="relative bg-liquid">
+      <main id="main-content" className="bg-liquid relative">
         {/* Hero Section */}
         <section
           id="hero"

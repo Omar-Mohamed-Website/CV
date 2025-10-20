@@ -27,64 +27,66 @@ const ExperienceTimeline = () => {
         <div className="absolute bottom-0 left-8 top-0 w-0.5 transform bg-primary-200 dark:bg-primary-100/20 md:left-1/2 md:-translate-x-px"></div>
 
         {[...profile.experience]
-          .sort((a, b) => new Date(a.start).getTime() - new Date(b.start).getTime())
+          .sort(
+            (a, b) => new Date(a.start).getTime() - new Date(b.start).getTime()
+          )
           .map((exp, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: index * 0.1 }}
-            viewport={{ once: true }}
-            className={`relative mb-16 flex items-center ${
-              index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
-            }`}
-          >
-            {/* Timeline dot */}
-            <div className="absolute left-8 z-10 h-4 w-4 -translate-x-1/2 transform rounded-full border-4 border-white bg-primary-500 shadow-lg dark:border-neutral-900 md:left-1/2"></div>
-
-            {/* Content */}
-            <div
-              className={`w-full md:w-5/12 ${
-                index % 2 === 0 ? 'pl-20 md:pl-0 md:pr-8' : 'pl-20 md:pl-8'
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              className={`relative mb-16 flex items-center ${
+                index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
               }`}
             >
-              <motion.div
-                whileHover={{ scale: 1.02, y: -5 }}
-                className="card timeline-item"
+              {/* Timeline dot */}
+              <div className="absolute left-8 z-10 h-4 w-4 -translate-x-1/2 transform rounded-full border-4 border-white bg-primary-500 shadow-lg dark:border-neutral-900 md:left-1/2"></div>
+
+              {/* Content */}
+              <div
+                className={`w-full md:w-5/12 ${
+                  index % 2 === 0 ? 'pl-20 md:pl-0 md:pr-8' : 'pl-20 md:pl-8'
+                }`}
               >
-                <div className="mb-3 flex flex-col sm:flex-row sm:items-center sm:justify-between">
-                  <h3 className="text-xl font-semibold text-neutral-900 dark:text-neutral-100">
-                    {exp.role}
-                  </h3>
-                  <span className="rounded-full bg-primary-50 px-3 py-1 text-sm font-medium text-primary-600 dark:bg-primary-100/20 dark:text-primary-100">
-                    {formatDateEU(exp.start)} - {formatDateEU(exp.end)}
-                  </span>
-                </div>
-
-                <h4 className="mb-3 text-lg font-medium text-primary-700 dark:text-primary-100">
-                  {exp.company}
-                </h4>
-
-                <p className="mb-4 leading-relaxed text-neutral-700 dark:text-neutral-300">
-                  {exp.description}
-                </p>
-
-                {exp.technologies && exp.technologies.length > 0 && (
-                  <div className="flex flex-wrap gap-2">
-                    {exp.technologies.map((tech, techIndex) => (
-                      <span
-                        key={techIndex}
-                        className="rounded-md bg-neutral-100 px-2 py-1 text-xs font-medium text-neutral-600 dark:bg-neutral-700 dark:text-neutral-300"
-                      >
-                        {tech}
-                      </span>
-                    ))}
+                <motion.div
+                  whileHover={{ scale: 1.02, y: -5 }}
+                  className="card timeline-item"
+                >
+                  <div className="mb-3 flex flex-col sm:flex-row sm:items-center sm:justify-between">
+                    <h3 className="text-xl font-semibold text-neutral-900 dark:text-neutral-100">
+                      {exp.role}
+                    </h3>
+                    <span className="rounded-full bg-primary-50 px-3 py-1 text-sm font-medium text-primary-600 dark:bg-primary-100/20 dark:text-primary-100">
+                      {formatDateEU(exp.start)} - {formatDateEU(exp.end)}
+                    </span>
                   </div>
-                )}
-              </motion.div>
-            </div>
-          </motion.div>
-  ))}
+
+                  <h4 className="mb-3 text-lg font-medium text-primary-700 dark:text-primary-100">
+                    {exp.company}
+                  </h4>
+
+                  <p className="mb-4 leading-relaxed text-neutral-700 dark:text-neutral-300">
+                    {exp.description}
+                  </p>
+
+                  {exp.technologies && exp.technologies.length > 0 && (
+                    <div className="flex flex-wrap gap-2">
+                      {exp.technologies.map((tech, techIndex) => (
+                        <span
+                          key={techIndex}
+                          className="rounded-md bg-neutral-100 px-2 py-1 text-xs font-medium text-neutral-600 dark:bg-neutral-700 dark:text-neutral-300"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </motion.div>
+              </div>
+            </motion.div>
+          ))}
       </div>
     </div>
   );

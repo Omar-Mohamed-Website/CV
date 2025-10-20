@@ -1,12 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 // In-memory store for Telegram stats (in production, use a database)
-const telegramStats: Record<string, { subscribers: number; updatedAt: string }> = {
-  'english_with_omarr': {
+const telegramStats: Record<
+  string,
+  { subscribers: number; updatedAt: string }
+> = {
+  english_with_omarr: {
     subscribers: 897,
     updatedAt: new Date().toISOString(),
   },
-  'Omar2007S': {
+  Omar2007S: {
     subscribers: 0, // Update this manually
     updatedAt: new Date().toISOString(),
   },
@@ -26,10 +29,7 @@ export async function GET(request: NextRequest) {
   const stats = telegramStats[channel];
 
   if (!stats) {
-    return NextResponse.json(
-      { error: 'Channel not found' },
-      { status: 404 }
-    );
+    return NextResponse.json({ error: 'Channel not found' }, { status: 404 });
   }
 
   return NextResponse.json({
@@ -46,10 +46,7 @@ export async function POST(request: NextRequest) {
 
     // Protect the endpoint
     if (apiKey !== process.env.ADMIN_API_KEY) {
-      return NextResponse.json(
-        { error: 'Unauthorized' },
-        { status: 401 }
-      );
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
     const body = await request.json();

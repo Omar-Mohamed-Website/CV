@@ -98,7 +98,12 @@ export const profile: Profile = {
       end: 'Present',
       description:
         'Built and manage a Telegram study community with 897 subscribers focused on English lessons for secondary students. Share study materials, lesson notes, live exams, and quick language tips to support interactive learning.',
-      technologies: ['Telegram', 'Community Management', 'E-Learning', 'Live Teaching'],
+      technologies: [
+        'Telegram',
+        'Community Management',
+        'E-Learning',
+        'Live Teaching',
+      ],
     },
     {
       company: 'TikTok - Freelance English Content',
@@ -107,7 +112,12 @@ export const profile: Profile = {
       end: 'Present',
       description:
         'Create short-form educational content on TikTok to simplify English for beginners and promote longer-form lessons. Work with trends to increase engagement. (Link to be added when available).',
-      technologies: ['TikTok', 'Scripting', 'Video Editing', 'Content Creation'],
+      technologies: [
+        'TikTok',
+        'Scripting',
+        'Video Editing',
+        'Content Creation',
+      ],
     },
   ],
 
@@ -238,11 +248,12 @@ export const profile: Profile = {
     youtube: 'https://www.youtube.com/@english_with_omarr',
     telegram: 'https://t.me/english_with_omarr',
     website: 'https://omar-mohamed.dev',
-  email: 'omarrmohamedd05@gmail.com',
+    email: 'omarrmohamedd05@gmail.com',
   },
 
   seo: {
-    title: 'Omar Mohamed - High School Student | English Tutor & Content Creator',
+    title:
+      'Omar Mohamed - High School Student | English Tutor & Content Creator',
     description:
       'High school student, English tutor, and content creator from Egypt, now in Mielec, Poland. Teaching English to beginners through YouTube (859 subscribers, 21.2k views) and Telegram (897 subscribers). Specializing in simplifying complex English concepts for secondary students.',
     keywords: [

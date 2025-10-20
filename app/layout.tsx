@@ -53,12 +53,18 @@ export const metadata: Metadata = {
 const socialSameAs = Object.values(profile.social)
   .filter(Boolean)
   .map((value) => {
-    if (typeof value === 'string' && value.includes('@') && !value.startsWith('http')) {
+    if (
+      typeof value === 'string' &&
+      value.includes('@') &&
+      !value.startsWith('http')
+    ) {
       return `mailto:${value}`;
     }
     return value as string;
   })
-  .filter((value) => typeof value === 'string' && /^(https?:\/\/|mailto:)/.test(value));
+  .filter(
+    (value) => typeof value === 'string' && /^(https?:\/\/|mailto:)/.test(value)
+  );
 
 const jsonLd = {
   '@context': 'https://schema.org',

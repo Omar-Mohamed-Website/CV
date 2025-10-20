@@ -7,7 +7,10 @@ type YouTubeStats = {
   channelId?: string;
 };
 
-async function fetchChannelStatsById(apiKey: string, channelId: string): Promise<YouTubeStats | null> {
+async function fetchChannelStatsById(
+  apiKey: string,
+  channelId: string
+): Promise<YouTubeStats | null> {
   const res = await fetch(
     `https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${encodeURIComponent(channelId)}&key=${apiKey}`,
     { cache: 'no-store' }
@@ -24,7 +27,10 @@ async function fetchChannelStatsById(apiKey: string, channelId: string): Promise
   };
 }
 
-async function resolveChannelIdFromQuery(apiKey: string, query: string): Promise<string | null> {
+async function resolveChannelIdFromQuery(
+  apiKey: string,
+  query: string
+): Promise<string | null> {
   // Remove leading @ if present
   const q = query.startsWith('@') ? query.slice(1) : query;
   const res = await fetch(
@@ -49,7 +55,9 @@ async function resolveChannelIdNoKey(query: string): Promise<string | null> {
   return item?.id?.channelId ?? null;
 }
 
-async function fetchChannelStatsNoKey(channelId: string): Promise<YouTubeStats | null> {
+async function fetchChannelStatsNoKey(
+  channelId: string
+): Promise<YouTubeStats | null> {
   const res = await fetch(
     `https://yt.lemnoslife.com/noKey/channels?part=statistics&id=${encodeURIComponent(channelId)}`,
     { cache: 'no-store' }
@@ -71,12 +79,15 @@ export async function GET(request: NextRequest) {
   const handle = url.searchParams.get('handle');
   const channelId = url.searchParams.get('channelId');
 
-  const apiKey = process.env.YOUTUBE_API_KEY || process.env.NEXT_PUBLIC_YOUTUBE_API_KEY;
+  const apiKey =
+    process.env.YOUTUBE_API_KEY || process.env.NEXT_PUBLIC_YOUTUBE_API_KEY;
 
   try {
     let id = channelId ?? null;
     if (!id && handle) {
-      id = apiKey ? await resolveChannelIdFromQuery(apiKey, handle) : await resolveChannelIdNoKey(handle);
+      id = apiKey
+        ? await resolveChannelIdFromQuery(apiKey, handle)
+        : await resolveChannelIdNoKey(handle);
     }
     if (!id) {
       return NextResponse.json({ error: 'Channel not found' }, { status: 404 });
@@ -86,10 +97,16 @@ export async function GET(request: NextRequest) {
       ? await fetchChannelStatsById(apiKey, id)
       : await fetchChannelStatsNoKey(id);
     if (!stats) {
-      return NextResponse.json({ error: 'Failed to fetch channel stats' }, { status: 502 });
+      return NextResponse.json(
+        { error: 'Failed to fetch channel stats' },
+        { status: 502 }
+      );
     }
     return NextResponse.json(stats, { status: 200 });
   } catch {
-    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
+    return NextResponse.json(
+      { error: 'Internal server error' },
+      { status: 500 }
+    );
   }
 }

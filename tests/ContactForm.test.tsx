@@ -7,15 +7,30 @@ import ContactForm from '../components/ContactForm';
 /* eslint-disable @typescript-eslint/no-unused-vars, no-unused-vars */
 vi.mock('framer-motion', () => ({
   motion: {
-    div: ({ children, whileHover: _h, whileTap: _t, layoutId: _l, whileInView: _w, ...props }: any) => (
-      <div {...props}>{children}</div>
-    ),
-    button: ({ children, whileHover: _h, whileTap: _t, layoutId: _l, whileInView: _w, ...props }: any) => (
-      <button {...props}>{children}</button>
-    ),
-    a: ({ children, whileHover: _h, whileTap: _t, layoutId: _l, whileInView: _w, ...props }: any) => (
-      <a {...props}>{children}</a>
-    ),
+    div: ({
+      children,
+      whileHover: _h,
+      whileTap: _t,
+      layoutId: _l,
+      whileInView: _w,
+      ...props
+    }: any) => <div {...props}>{children}</div>,
+    button: ({
+      children,
+      whileHover: _h,
+      whileTap: _t,
+      layoutId: _l,
+      whileInView: _w,
+      ...props
+    }: any) => <button {...props}>{children}</button>,
+    a: ({
+      children,
+      whileHover: _h,
+      whileTap: _t,
+      layoutId: _l,
+      whileInView: _w,
+      ...props
+    }: any) => <a {...props}>{children}</a>,
   },
 }));
 /* eslint-enable @typescript-eslint/no-unused-vars, no-unused-vars */
@@ -211,11 +226,11 @@ describe('ContactForm Component', () => {
 
     expect(screen.getByText('Connect on Social Media')).toBeInTheDocument();
 
-  const linkedInLink = screen.getByLabelText('LinkedIn');
-  const githubLink = screen.getByLabelText('GitHub');
+    const linkedInLink = screen.getByLabelText('LinkedIn');
+    const githubLink = screen.getByLabelText('GitHub');
 
-  expect(linkedInLink).toBeInTheDocument();
-  expect(githubLink).toBeInTheDocument();
+    expect(linkedInLink).toBeInTheDocument();
+    expect(githubLink).toBeInTheDocument();
   });
 
   it('has proper keyboard navigation', async () => {

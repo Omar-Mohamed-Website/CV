@@ -28,8 +28,9 @@ const Footer = () => {
               {profile.name.split(' ')[0]} {profile.name.split(' ')[1]}
             </h3>
             <p className="mb-6 leading-relaxed text-neutral-300">
-              English Teacher and Content Creator focused on simplifying complex concepts
-              and building supportive learning communities. Always learning, always teaching.
+              English Teacher and Content Creator focused on simplifying complex
+              concepts and building supportive learning communities. Always
+              learning, always teaching.
             </p>
             <div className="flex items-center text-sm text-neutral-400">
               <svg
@@ -198,8 +199,11 @@ const Footer = () => {
               © {currentYear} {profile.name}. All rights reserved.
             </h4>
             <p className="mb-3 text-xs leading-relaxed text-neutral-400">
-              All content on this website, including text, images, graphics, and code, is protected by copyright and other intellectual property laws.
-              You may view and print pages for personal, non-commercial use only. Any other use, reproduction, or distribution requires prior written permission from the copyright owner.
+              All content on this website, including text, images, graphics, and
+              code, is protected by copyright and other intellectual property
+              laws. You may view and print pages for personal, non-commercial
+              use only. Any other use, reproduction, or distribution requires
+              prior written permission from the copyright owner.
             </p>
             <p className="text-xs text-neutral-400">
               For permissions or copyright concerns, please contact:{' '}

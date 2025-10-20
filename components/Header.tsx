@@ -207,7 +207,7 @@ const MobileMenu = ({
         initial={{ x: '100%' }}
         animate={{ x: isOpen ? 0 : '100%' }}
         transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-        className="fixed right-0 top-0 z-50 h-full w-72 glass-strong md:hidden"
+        className="glass-strong fixed right-0 top-0 z-50 h-full w-72 md:hidden"
       >
         <div className="flex h-full flex-col p-6">
           <div className="mb-6 flex items-center justify-between border-b border-neutral-200 pb-4 dark:border-neutral-800">

@@ -83,7 +83,10 @@ export async function POST(request: NextRequest) {
     try {
       const url = nodemailer.getTestMessageUrl(info);
       if (url) previewUrl = url;
-    } catch {}
+    } catch {
+      // ignore preview URL resolution failures (e.g., non-Ethereal transports)
+      previewUrl = undefined;
+    }
 
     return NextResponse.json(
       {

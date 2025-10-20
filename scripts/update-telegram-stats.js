@@ -68,10 +68,14 @@ function updateChannel(channel) {
 
       res.on('end', () => {
         if (res.statusCode === 200) {
-          console.log(`✓ Updated ${channel.name}: ${channel.subscribers} subscribers`);
+          console.log(
+            `✓ Updated ${channel.name}: ${channel.subscribers} subscribers`
+          );
           resolve(JSON.parse(data));
         } else {
-          console.error(`✗ Failed to update ${channel.name}: ${res.statusCode}`);
+          console.error(
+            `✗ Failed to update ${channel.name}: ${res.statusCode}`
+          );
           console.error(`  Response: ${data}`);
           reject(new Error(`HTTP ${res.statusCode}`));
         }

@@ -17,7 +17,9 @@ export interface SocialStats {
 }
 
 // YouTube Data API v3
-export async function getYouTubeStats(channelId: string): Promise<YouTubeStats | null> {
+export async function getYouTubeStats(
+  channelId: string
+): Promise<YouTubeStats | null> {
   try {
     const apiKey = process.env.NEXT_PUBLIC_YOUTUBE_API_KEY;
 
@@ -38,7 +40,8 @@ export async function getYouTubeStats(channelId: string): Promise<YouTubeStats |
 
     if (!data.items || data.items.length === 0) {
       return null;
-    }    const stats = data.items[0].statistics;
+    }
+    const stats = data.items[0].statistics;
 
     return {
       subscribers: parseInt(stats.subscriberCount || '0'),
@@ -53,12 +56,17 @@ export async function getYouTubeStats(channelId: string): Promise<YouTubeStats |
 // Telegram doesn't have a public API for subscriber counts
 // We'll use a webhook/manual update approach or scraping (not recommended)
 // For now, we'll create an API endpoint to manually update these values
-export async function getTelegramStats(channelUsername: string): Promise<TelegramStats | null> {
+export async function getTelegramStats(
+  channelUsername: string
+): Promise<TelegramStats | null> {
   try {
     // Option 1: Use your own backend endpoint that you manually update
-    const response = await fetch(`/api/telegram-stats?channel=${channelUsername}`, {
-      next: { revalidate: 3600 } // Cache for 1 hour
-    });
+    const response = await fetch(
+      `/api/telegram-stats?channel=${channelUsername}`,
+      {
+        next: { revalidate: 3600 }, // Cache for 1 hour
+      }
+    );
 
     if (!response.ok) {
       return null;

@@ -30,10 +30,7 @@ export async function GET() {
       }
     }
 
-    return NextResponse.json(
-      { error: 'Channel not found' },
-      { status: 404 }
-    );
+    return NextResponse.json({ error: 'Channel not found' }, { status: 404 });
   } catch (error) {
     return NextResponse.json(
       { error: 'Failed to fetch channel ID' },

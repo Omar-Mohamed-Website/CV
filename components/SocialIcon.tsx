@@ -34,7 +34,11 @@ const paths: Record<Exclude<SocialName, 'email'>, React.ReactElement> = {
   ),
 };
 
-export const SocialIcon: React.FC<SocialIconProps> = ({ name, className = 'h-5 w-5', ...svgProps }) => {
+export const SocialIcon: React.FC<SocialIconProps> = ({
+  name,
+  className = 'h-5 w-5',
+  ...svgProps
+}) => {
   if (name === 'email') {
     return (
       <svg

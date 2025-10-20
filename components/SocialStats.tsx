@@ -45,7 +45,9 @@ export default function SocialStats({
           if (channelId) params.set('channelId', channelId);
           if (youtubeHandle) params.set('handle', youtubeHandle);
 
-          const response = await fetch(`/api/youtube-stats?${params.toString()}`);
+          const response = await fetch(
+            `/api/youtube-stats?${params.toString()}`
+          );
           if (!response.ok) throw new Error('Failed to fetch YouTube stats');
 
           const data = await response.json();
@@ -57,7 +59,9 @@ export default function SocialStats({
             } as YouTubeStats);
           }
         } else if (platform === 'telegram' && channelUsername) {
-          const response = await fetch(`/api/telegram-stats?channel=${channelUsername}`);
+          const response = await fetch(
+            `/api/telegram-stats?channel=${channelUsername}`
+          );
           if (!response.ok) throw new Error('Failed to fetch Telegram stats');
 
           const data = await response.json();
@@ -97,15 +101,21 @@ export default function SocialStats({
     return (
       <div className="flex flex-wrap gap-4 text-sm">
         <div className="flex items-center gap-1">
-          <span className="font-semibold">{ytStats.subscribers.toLocaleString()}</span>
+          <span className="font-semibold">
+            {ytStats.subscribers.toLocaleString()}
+          </span>
           <span className="text-gray-600 dark:text-gray-400">subscribers</span>
         </div>
         <div className="flex items-center gap-1">
-          <span className="font-semibold">{ytStats.videos.toLocaleString()}</span>
+          <span className="font-semibold">
+            {ytStats.videos.toLocaleString()}
+          </span>
           <span className="text-gray-600 dark:text-gray-400">videos</span>
         </div>
         <div className="flex items-center gap-1">
-          <span className="font-semibold">{ytStats.views.toLocaleString()}</span>
+          <span className="font-semibold">
+            {ytStats.views.toLocaleString()}
+          </span>
           <span className="text-gray-600 dark:text-gray-400">views</span>
         </div>
       </div>
@@ -116,7 +126,9 @@ export default function SocialStats({
     const tgStats = stats as TelegramStats;
     return (
       <div className="flex items-center gap-1 text-sm">
-        <span className="font-semibold">{tgStats.subscribers.toLocaleString()}</span>
+        <span className="font-semibold">
+          {tgStats.subscribers.toLocaleString()}
+        </span>
         <span className="text-gray-600 dark:text-gray-400">subscribers</span>
       </div>
     );

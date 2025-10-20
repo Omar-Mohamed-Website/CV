@@ -6,15 +6,30 @@ import Header from '../components/Header';
 /* eslint-disable @typescript-eslint/no-unused-vars, no-unused-vars */
 vi.mock('framer-motion', () => ({
   motion: {
-    header: ({ children, whileHover: _h, whileTap: _t, layoutId: _l, whileInView: _w, ...props }: any) => (
-      <header {...props}>{children}</header>
-    ),
-    div: ({ children, whileHover: _h, whileTap: _t, layoutId: _l, whileInView: _w, ...props }: any) => (
-      <div {...props}>{children}</div>
-    ),
-    button: ({ children, whileHover: _h, whileTap: _t, layoutId: _l, whileInView: _w, ...props }: any) => (
-      <button {...props}>{children}</button>
-    ),
+    header: ({
+      children,
+      whileHover: _h,
+      whileTap: _t,
+      layoutId: _l,
+      whileInView: _w,
+      ...props
+    }: any) => <header {...props}>{children}</header>,
+    div: ({
+      children,
+      whileHover: _h,
+      whileTap: _t,
+      layoutId: _l,
+      whileInView: _w,
+      ...props
+    }: any) => <div {...props}>{children}</div>,
+    button: ({
+      children,
+      whileHover: _h,
+      whileTap: _t,
+      layoutId: _l,
+      whileInView: _w,
+      ...props
+    }: any) => <button {...props}>{children}</button>,
   },
 }));
 /* eslint-enable @typescript-eslint/no-unused-vars, no-unused-vars */
