@@ -194,55 +194,45 @@
   @keyframes strobeBox {
     0%,
     100% {
-      box-shadow: 0 0 0 rgba(249, 115, 22, 0); /* orange-500 */
+      box-shadow:
+        0 0 8px rgba(249, 115, 22, 0.3),
+        0 0 16px rgba(249, 115, 22, 0.15),
+        inset 0 0 20px rgba(249, 115, 22, 0.05);
       filter: brightness(1);
+      border-color: rgba(249, 115, 22, 0.3);
     }
     50% {
       box-shadow:
-        0 0 24px rgba(249, 115, 22, 0.45),
-        0 0 48px rgba(249, 115, 22, 0.25);
-      filter: brightness(1.05);
+        0 0 30px rgba(249, 115, 22, 0.8),
+        0 0 60px rgba(249, 115, 22, 0.5),
+        0 0 90px rgba(249, 115, 22, 0.3),
+        inset 0 0 30px rgba(249, 115, 22, 0.15);
+      filter: brightness(1.15);
+      border-color: rgba(249, 115, 22, 0.6);
     }
   }
   .strobe-warning {
-    animation: strobeBox 1.2s ease-in-out infinite;
+    animation: strobeBox 1s ease-in-out infinite;
   }
   @keyframes strobeIconRed {
     0%,
     100% {
       transform: scale(1);
-      filter: drop-shadow(0 0 0 rgba(239, 68, 68, 0));
-      opacity: 0.9;
+      filter: drop-shadow(0 0 4px rgba(239, 68, 68, 0.4));
+      opacity: 0.95;
     }
     50% {
-      transform: scale(1.05);
-      filter: drop-shadow(0 0 10px rgba(239, 68, 68, 0.8));
+      transform: scale(1.08);
+      filter: drop-shadow(0 0 16px rgba(239, 68, 68, 0.9))
+        drop-shadow(0 0 30px rgba(239, 68, 68, 0.6));
       opacity: 1;
     }
   }
   .strobe-icon-red {
-    animation: strobeIconRed 1.2s ease-in-out infinite;
+    animation: strobeIconRed 1s ease-in-out infinite;
   }
   .strobe-delay-half {
-    animation-delay: 0.6s;
-  }
-  .bg-liquid {
-    background-image:
-      radial-gradient(
-        1200px 600px at -10% -10%,
-        rgba(2, 81, 89, 0.08),
-        transparent 60%
-      ),
-      radial-gradient(
-        800px 400px at 110% 10%,
-        rgba(122, 184, 191, 0.12),
-        transparent 60%
-      ),
-      radial-gradient(
-        1000px 600px at 50% 120%,
-        rgba(174, 250, 255, 0.07),
-        transparent 60%
-      );
+    animation-delay: 0.5s;
   }
 
   /* Mobile-specific optimizations */
