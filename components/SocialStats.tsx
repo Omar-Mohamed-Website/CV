@@ -37,20 +37,44 @@ const FALLBACK_STATS = {
   } as TelegramStats,
 };
 
-// YouTube Data API v3 - public, no auth required for public data
+// YouTube Data API v3
 const fetchYouTubeStats = async (
   channelId: string
 ): Promise<YouTubeStats | null> => {
   try {
-    // Use YouTube Data API v3 without API key for basic public stats
+    const apiKey = process.env.NEXT_PUBLIC_YOUTUBE_API_KEY;
+
+    // If no API key, use fallback stats
+    if (!apiKey) {
+      // eslint-disable-next-line no-console
+      console.warn('YouTube API key not configured. Using fallback stats.');
+      return null;
+    }
+
     const response = await fetch(
-      `https://www.googleapis.com/youtube/v3/channels?part=statistics,snippet&id=${channelId}&key=AIzaSyBwKRMgZPmqgQkQw9o7RrVxZJMXx8hK0Yw`
+      `https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${channelId}&key=${apiKey}`,
+      { next: { revalidate: 300 } } // Cache for 5 minutes
     );
 
-    if (!response.ok) throw new Error('YouTube API error');
+    if (!response.ok) {
+      // eslint-disable-next-line no-console
+      console.error('YouTube API error:', response.status, response.statusText);
+      return null;
+    }
 
     const data = await response.json();
-    if (!data.items?.[0]) throw new Error('Channel not found');
+
+    if (data.error) {
+      // eslint-disable-next-line no-console
+      console.error('YouTube API error:', data.error.message);
+      return null;
+    }
+
+    if (!data.items?.[0]) {
+      // eslint-disable-next-line no-console
+      console.error('YouTube channel not found');
+      return null;
+    }
 
     const stats = data.items[0].statistics;
 
@@ -61,7 +85,7 @@ const fetchYouTubeStats = async (
     };
   } catch (error) {
     // eslint-disable-next-line no-console
-    console.warn('Failed to fetch YouTube stats:', error);
+    console.error('Failed to fetch YouTube stats:', error);
     return null;
   }
 };

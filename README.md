@@ -65,7 +65,16 @@ npm run dev
    - Replace `public/cv.pdf` with your actual CV
    - Update `public/favicon.ico` with your personal favicon
 
-3. **Configure Contact Form** (Optional)
+3. **Configure YouTube API for Real-Time Stats** (Optional)
+
+   ```bash
+   # Create .env.local file
+   cp .env.example .env.local
+   # Add your YouTube Data API v3 key
+   # See YOUTUBE_API_SETUP.md for detailed instructions
+   ```
+
+4. **Configure Contact Form** (Optional)
 
    ```bash
    # Edit environment variables
@@ -73,14 +82,14 @@ npm run dev
    # Add your email service API keys (Resend, SendGrid, etc.)
    ```
 
-4. **Start Development**
+5. **Start Development**
 
    ```bash
    npm run dev
    # Open http://localhost:3000
    ```
 
-5. **Ready for Production**
+6. **Ready for Production**
    ```bash
    npm run build    # Build the project
    npm run start    # Test production build
