@@ -96,9 +96,9 @@ const ContactForm = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
-            className="card p-6"
+            className="card p-5 sm:p-6"
           >
-            <h3 className="mb-6 text-2xl font-semibold text-neutral-900 dark:text-neutral-100">
+            <h3 className="mb-6 text-xl font-semibold text-neutral-900 dark:text-neutral-100 sm:text-2xl">
               Let&apos;s Start a Conversation
             </h3>
             <p className="mb-8 leading-relaxed text-neutral-700 dark:text-neutral-300">

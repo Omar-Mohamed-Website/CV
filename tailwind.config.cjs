@@ -11,7 +11,7 @@ module.exports = {
         primary: {
           50: '#C2EDF2',
           100: '#7AB8BF',
-          200: '#3E848C',
+          200: '#5AA3AB', // Improved contrast
           300: '#025159',
           400: '#024148',
           500: '#025159',

@@ -75,7 +75,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 1.0 }}
-            className="mb-8 flex items-center justify-center text-neutral-600 dark:text-neutral-400 lg:justify-start"
+            className="mb-8 flex items-center justify-center text-neutral-700 dark:text-neutral-300 lg:justify-start"
           >
             <svg
               className="mr-2 h-5 w-5"

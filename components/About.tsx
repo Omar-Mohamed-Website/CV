@@ -16,7 +16,7 @@ const About = () => {
         className="text-center"
       >
         <h2 className="section-heading">About Me</h2>
-        <div className="card mx-auto max-w-4xl p-8">
+        <div className="card mx-auto max-w-4xl p-6 sm:p-8">
           <p className="section-subheading">{profile.summary}</p>
 
           <div className="mt-12 grid gap-8 md:grid-cols-2">

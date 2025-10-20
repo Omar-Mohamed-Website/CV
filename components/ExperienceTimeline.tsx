@@ -50,22 +50,38 @@ const ExperienceTimeline = () => {
                   index % 2 === 0 ? 'pl-20 md:pl-0 md:pr-8' : 'pl-20 md:pl-8'
                 }`}
               >
+                {' '}
                 <motion.div
                   whileHover={{ scale: 1.02, y: -5 }}
                   className="card timeline-item"
                 >
-                  <div className="mb-3 flex flex-col sm:flex-row sm:items-center sm:justify-between">
-                    <h3 className="text-xl font-semibold text-neutral-900 dark:text-neutral-100">
+                  {/* Header with improved layout */}
+                  <div className="mb-4 flex flex-col gap-3">
+                    <h3 className="text-xl font-semibold leading-tight text-neutral-900 dark:text-neutral-100">
                       {exp.role}
                     </h3>
-                    <span className="rounded-full bg-primary-50 px-3 py-1 text-sm font-medium text-primary-600 dark:bg-primary-100/20 dark:text-primary-100">
-                      {formatDateEU(exp.start)} - {formatDateEU(exp.end)}
-                    </span>
+                    <h4 className="text-base font-medium text-primary-600 dark:text-primary-200">
+                      {exp.company}
+                    </h4>
+                    <div className="inline-flex w-fit items-center gap-2 rounded-lg bg-primary-50 px-3 py-1.5 dark:bg-primary-900/30">
+                      <svg
+                        className="h-4 w-4 text-primary-600 dark:text-primary-300"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                        />
+                      </svg>
+                      <span className="text-sm font-medium text-primary-700 dark:text-primary-200">
+                        {formatDateEU(exp.start)} - {formatDateEU(exp.end)}
+                      </span>
+                    </div>
                   </div>
-
-                  <h4 className="mb-3 text-lg font-medium text-primary-700 dark:text-primary-100">
-                    {exp.company}
-                  </h4>
 
                   <p className="mb-4 leading-relaxed text-neutral-700 dark:text-neutral-300">
                     {exp.description}

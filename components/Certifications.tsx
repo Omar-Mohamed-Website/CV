@@ -36,10 +36,10 @@ const Certifications = () => {
               className="card flex h-full flex-col"
             >
               {/* Certificate icon */}
-              <div className="mb-4 flex items-center">
-                <div className="mr-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary-100 dark:bg-primary-100/20">
+              <div className="mb-4 flex items-start gap-4">
+                <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-primary-100 dark:bg-primary-900/30">
                   <svg
-                    className="h-6 w-6 text-primary-600 dark:text-primary-100"
+                    className="h-6 w-6 text-primary-600 dark:text-primary-300"
                     fill="currentColor"
                     viewBox="0 0 20 20"
                   >
@@ -50,11 +50,11 @@ const Certifications = () => {
                     />
                   </svg>
                 </div>
-                <div className="flex-1">
-                  <h3 className="mb-1 text-lg font-semibold text-neutral-900 dark:text-neutral-100">
+                <div className="min-w-0 flex-1">
+                  <h3 className="mb-1 text-base font-semibold leading-tight text-neutral-900 dark:text-neutral-100 sm:text-lg">
                     {cert.name}
                   </h3>
-                  <p className="text-sm font-medium text-primary-600 dark:text-primary-100">
+                  <p className="text-sm font-medium text-primary-600 dark:text-primary-200">
                     {cert.issuer}
                   </p>
                 </div>
@@ -62,9 +62,9 @@ const Certifications = () => {
 
               {/* Date */}
               <div className="mb-4">
-                <span className="text-sm text-neutral-600 dark:text-neutral-400">
+                <span className="text-sm font-medium text-neutral-700 dark:text-neutral-300">
                   Issued:{' '}
-                  <span className="font-medium text-neutral-900 dark:text-neutral-100">
+                  <span className="font-semibold text-neutral-900 dark:text-neutral-100">
                     {formatDateEU(cert.date)}
                   </span>
                 </span>

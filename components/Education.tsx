@@ -22,7 +22,7 @@ const Education = () => {
         </p>
       </motion.div>
 
-      <div className="grid gap-8 md:grid-cols-2">
+      <div className="grid gap-6 md:grid-cols-2">
         {profile.education.map((edu, index) => (
           <motion.div
             key={index}
@@ -30,23 +30,38 @@ const Education = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: index * 0.2 }}
             viewport={{ once: true }}
+            className="flex"
           >
             <motion.div
               whileHover={{ scale: 1.02, y: -5 }}
-              className="card h-full"
+              className="card flex h-full w-full flex-col"
             >
-              <div className="mb-4 flex items-start justify-between">
-                <div className="flex-1">
-                  <h3 className="mb-2 text-xl font-semibold text-neutral-900 dark:text-neutral-100">
-                    {edu.degree}
-                  </h3>
-                  <h4 className="mb-3 text-lg font-medium text-primary-700 dark:text-primary-100">
-                    {edu.school}
-                  </h4>
+              {/* Header with consistent layout */}
+              <div className="mb-4 flex flex-col gap-3">
+                <h3 className="text-xl font-semibold leading-tight text-neutral-900 dark:text-neutral-100">
+                  {edu.degree}
+                </h3>
+                <h4 className="text-base font-medium text-primary-600 dark:text-primary-200">
+                  {edu.school}
+                </h4>
+                <div className="inline-flex w-fit items-center gap-2 rounded-lg bg-primary-50 px-3 py-1.5 dark:bg-primary-900/30">
+                  <svg
+                    className="h-4 w-4 text-primary-600 dark:text-primary-300"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                    />
+                  </svg>
+                  <span className="text-sm font-medium text-primary-700 dark:text-primary-200">
+                    {formatDateEU(edu.start)} - {formatDateEU(edu.end)}
+                  </span>
                 </div>
-                <span className="ml-4 whitespace-nowrap rounded-full bg-primary-50 px-3 py-1 text-sm font-medium text-primary-600 dark:bg-primary-100/20 dark:text-primary-100">
-                  {formatDateEU(edu.start)} - {formatDateEU(edu.end)}
-                </span>
               </div>
 
               {edu.gpa && (
@@ -61,14 +76,14 @@ const Education = () => {
               )}
 
               {edu.description && (
-                <p className="leading-relaxed text-neutral-700 dark:text-neutral-300">
+                <p className="flex-1 leading-relaxed text-neutral-700 dark:text-neutral-300">
                   {edu.description}
                 </p>
               )}
 
               {/* Academic achievement indicator */}
-              <div className="mt-4 border-t border-neutral-100 pt-4 dark:border-neutral-700">
-                <div className="flex items-center text-sm text-neutral-600 dark:text-neutral-400">
+              <div className="mt-auto border-t border-neutral-100 pt-4 dark:border-neutral-700">
+                <div className="flex items-center text-sm font-medium text-neutral-700 dark:text-neutral-300">
                   <svg
                     className="mr-2 h-4 w-4 text-primary-500 dark:text-primary-100"
                     fill="currentColor"

@@ -108,7 +108,7 @@
   }
 
   .section-subheading {
-    @apply mx-auto mb-8 max-w-2xl text-lg text-neutral-600 dark:text-neutral-300;
+    @apply mx-auto mb-8 max-w-2xl text-lg leading-relaxed text-neutral-700 dark:text-neutral-300;
   }
 
   .container-responsive {
@@ -116,7 +116,7 @@
   }
 
   .card {
-    @apply rounded-xl border border-white/20 bg-white/60 p-6 shadow-lg backdrop-blur-xl transition-shadow duration-200 hover:shadow-xl dark:border-white/10 dark:bg-neutral-900/40 dark:shadow-neutral-900/40;
+    @apply rounded-xl border border-white/20 bg-white/60 p-5 shadow-lg backdrop-blur-xl transition-all duration-200 hover:shadow-xl dark:border-white/10 dark:bg-neutral-900/40 dark:shadow-neutral-900/40 sm:p-6;
   }
 
   .skill-bar {
@@ -175,6 +175,44 @@
         rgba(174, 250, 255, 0.07),
         transparent 60%
       );
+  }
+
+  /* Mobile-specific optimizations */
+  @media (max-width: 768px) {
+    .container-responsive {
+      @apply px-4;
+    }
+
+    .section-heading {
+      @apply text-2xl;
+    }
+
+    .card {
+      @apply p-4;
+    }
+  }
+
+  /* Touch target optimization for mobile */
+  @media (hover: none) and (pointer: coarse) {
+    button,
+    a,
+    [role='button'] {
+      min-height: 44px;
+      min-width: 44px;
+    }
+  }
+
+  /* Improve text readability on mobile */
+  @media (max-width: 640px) {
+    body {
+      font-size: 16px; /* Prevent iOS zoom on input focus */
+    }
+
+    input,
+    textarea,
+    select {
+      font-size: 16px; /* Prevent iOS zoom */
+    }
   }
 }
 
