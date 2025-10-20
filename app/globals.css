@@ -225,21 +225,21 @@
     0%,
     100% {
       transform: scale(1);
-      filter: drop-shadow(0 0 8px rgba(220, 38, 38, 0.7))
-        drop-shadow(0 0 16px rgba(220, 38, 38, 0.5));
+      filter: drop-shadow(0 0 8px rgba(252, 165, 165, 0.7))
+        drop-shadow(0 0 16px rgba(252, 165, 165, 0.5));
       opacity: 1;
     }
     50% {
       transform: scale(1.1);
-      filter: drop-shadow(0 0 20px rgba(220, 38, 38, 1))
-        drop-shadow(0 0 40px rgba(220, 38, 38, 0.8))
-        drop-shadow(0 0 60px rgba(220, 38, 38, 0.5));
+      filter: drop-shadow(0 0 20px rgba(252, 165, 165, 1))
+        drop-shadow(0 0 40px rgba(252, 165, 165, 0.8))
+        drop-shadow(0 0 60px rgba(252, 165, 165, 0.5));
       opacity: 1;
     }
   }
   .strobe-icon-red {
     animation: strobeIconRed 1s ease-in-out infinite;
-    color: rgb(220, 38, 38) !important;
+    color: rgb(252, 165, 165) !important;
   }
   .strobe-delay-half {
     animation-delay: 0.5s;
