@@ -31,11 +31,12 @@ const About = () => {
                 Background
               </h3>
               <p className="leading-relaxed text-neutral-700 dark:text-neutral-300">
-                Currently pursuing a BSc in Cybersecurity at Uniwersytet VIZJA,
-                I combine academic knowledge with practical experience gained
-                through internships and personal projects. My passion lies in
-                understanding and defending against cyber threats whilst
-                building secure, robust systems.
+                Currently pursuing high school education at Martyr Colonel Ahmed
+                Jaber Nassar Secondary School in Mielec, Poland. Originally from
+                Egypt, I combine my passion for English education with content
+                creation to help students learn effectively. Through YouTube,
+                Telegram, and TikTok, I've built a community of learners focused
+                on making English accessible and enjoyable for beginners.
               </p>
             </motion.div>
 
@@ -52,19 +53,19 @@ const About = () => {
               <ul className="space-y-2 text-neutral-700 dark:text-neutral-300">
                 <li className="flex items-start">
                   <span className="mr-3 mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-primary-500"></span>
-                  Penetration Testing & Vulnerability Assessment
+                  English Teaching & Tutoring for Beginners
                 </li>
                 <li className="flex items-start">
                   <span className="mr-3 mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-primary-500"></span>
-                  Network Security & Incident Response
+                  Educational Content Creation & Video Production
                 </li>
                 <li className="flex items-start">
                   <span className="mr-3 mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-primary-500"></span>
-                  Secure Software Development
+                  Community Building & Student Engagement
                 </li>
                 <li className="flex items-start">
                   <span className="mr-3 mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-primary-500"></span>
-                  Digital Forensics & Malware Analysis
+                  Chess Strategy & Academic Support
                 </li>
               </ul>
             </motion.div>
