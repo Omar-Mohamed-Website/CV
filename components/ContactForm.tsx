@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
@@ -278,18 +279,19 @@ const ContactForm = () => {
                   className="pointer-events-none absolute inset-0 z-20 rounded-xl bg-black/50 backdrop-blur-[1px]"
                   aria-hidden="true"
                 />
-                <div className="pointer-events-none absolute left-1/2 top-4 z-30 -translate-x-1/2">
-                  <div className="mx-auto w-max rounded-lg border border-yellow-300 bg-yellow-50/90 px-3 py-2 text-yellow-900 shadow-lg dark:border-yellow-700 dark:bg-yellow-900/80 dark:text-yellow-100">
+                <div className="pointer-events-none absolute left-1/2 top-1/2 z-30 -translate-x-1/2 -translate-y-1/2">
+                  <div className="mx-auto w-max rounded-lg border border-yellow-300 bg-yellow-50/95 px-4 py-3 text-yellow-900 shadow-xl dark:border-yellow-700 dark:bg-yellow-900/90 dark:text-yellow-100">
                     <div className="flex flex-col items-center text-center">
-                      <svg
-                        className="mb-1 h-5 w-5 text-yellow-600 dark:text-yellow-200"
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
-                        aria-hidden="true"
-                      >
-                        <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0zM12 9v4m0 4h.01" />
-                      </svg>
-                      <p className="text-xs font-semibold">
+                      <div className="relative mb-2 h-8 w-8">
+                        <Image
+                          src="/warning-icon.png"
+                          alt="Warning"
+                          fill
+                          className="object-contain"
+                          aria-hidden="true"
+                        />
+                      </div>
+                      <p className="text-sm font-semibold">
                         Temporarily Unavailable.
                       </p>
                     </div>
