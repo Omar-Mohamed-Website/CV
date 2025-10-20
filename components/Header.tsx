@@ -165,6 +165,18 @@ const MobileMenu = ({
     setIsOpen(false);
   };
 
+  // Close menu on scroll
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const handleScroll = () => {
+      setIsOpen(false);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [isOpen]);
+
   return (
     <>
       <button
