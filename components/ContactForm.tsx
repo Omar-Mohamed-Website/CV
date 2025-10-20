@@ -33,8 +33,6 @@ const ContactForm = () => {
     setSubmitStatus('idle');
 
     try {
-      // For GitHub Pages deployment: Use Formspree (free service)
-      // Sign up at https://formspree.io and replace YOUR_FORM_ID
       const formspreeEndpoint = process.env.NEXT_PUBLIC_FORMSPREE_ID
         ? `https://formspree.io/f/${process.env.NEXT_PUBLIC_FORMSPREE_ID}`
         : `/api/contact`; // Fallback to API route if deployed on Vercel

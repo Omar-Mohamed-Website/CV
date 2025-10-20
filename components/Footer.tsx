@@ -163,6 +163,7 @@ const Footer = () => {
               </motion.a>
             </div>
 
+            {/* Email for direct contact */}
             <a
               href={`mailto:${profile.email}`}
               className="-mx-2 inline-flex items-center rounded-md px-2 py-1 text-sm text-primary-400 transition-colors duration-200 hover:text-primary-300 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2 focus:ring-offset-neutral-900"
@@ -185,6 +186,7 @@ const Footer = () => {
           </motion.div>
         </div>
 
+        {/* Copyright Notice */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

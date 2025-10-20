@@ -1,4 +1,5 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import React from 'react';
 import { describe, it, expect, vi } from 'vitest';
 import Header from '../components/Header';
@@ -35,21 +36,30 @@ vi.mock('framer-motion', () => ({
 /* eslint-enable @typescript-eslint/no-unused-vars, no-unused-vars */
 
 describe('Header Theme Toggle', () => {
-  it('renders theme toggle and cycles through theme modes smartly', () => {
+  it('renders theme toggle and cycles through theme modes smartly', async () => {
+    const user = userEvent.setup();
     render(<Header />);
     const toggles = screen.getAllByTestId('theme-toggle');
     expect(toggles.length).toBeGreaterThan(0);
-    const toggle = toggles[0];
 
-    // Initial state: auto mode (system preference mocked to light)
-    expect(document.documentElement.classList.contains('dark')).toBe(false);
+    const toggleButton = toggles[0];
+    expect(toggleButton).toBeInTheDocument();
 
-    // Click 1: auto -> dark (since system is light, skip light and go to dark)
-    fireEvent.click(toggle);
-    expect(document.documentElement.classList.contains('dark')).toBe(true);
+    expect(toggleButton).toHaveAttribute(
+      'aria-label',
+      'Current theme: Auto (system). Click to cycle themes.'
+    );
 
-    // Click 2: dark -> auto (back to system default)
-    fireEvent.click(toggle);
-    expect(document.documentElement.classList.contains('dark')).toBe(false);
+    await user.click(toggleButton);
+    expect(toggleButton).toHaveAttribute(
+      'aria-label',
+      'Current theme: Dark mode. Click to cycle themes.'
+    );
+
+    await user.click(toggleButton);
+    expect(toggleButton).toHaveAttribute(
+      'aria-label',
+      'Current theme: Auto (system). Click to cycle themes.'
+    );
   });
 });

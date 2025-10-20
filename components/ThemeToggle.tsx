@@ -31,14 +31,12 @@ export default function ThemeToggle() {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    // Initialize theme - always start with auto (system default)
     const stored = getStoredTheme();
     const initial: ThemeMode = stored ?? 'auto';
     setThemeMode(initial);
     applyTheme(initial);
     setMounted(true);
 
-    // Listen for system theme changes when in auto mode
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
     const handleChange = () => {
       if (getStoredTheme() === 'auto') {
@@ -52,16 +50,11 @@ export default function ThemeToggle() {
   const cycleTheme = () => {
     const systemPrefersDark = getSystemPrefersDark();
 
-    // Smart cycling logic:
-    // If system is light: auto → dark → auto (skip light since it's same as auto)
-    // If system is dark: auto → light → auto (skip dark since it's same as auto)
     let next: ThemeMode;
 
     if (themeMode === 'auto') {
-      // From auto, go to the opposite of system preference
       next = systemPrefersDark ? 'light' : 'dark';
     } else {
-      // From explicit theme, go back to auto
       next = 'auto';
     }
 
@@ -69,19 +62,17 @@ export default function ThemeToggle() {
     applyTheme(next);
     try {
       window.localStorage.setItem(THEME_KEY, next);
-    } catch (e) {
-      // ignore storage errors (private mode, etc.)
+    } catch {
+      return;
     }
   };
 
-  // Determine current effective theme for icon display
   const effectiveIsDark = mounted
     ? themeMode === 'dark' || (themeMode === 'auto' && getSystemPrefersDark())
     : false;
 
   const getIcon = () => {
     if (themeMode === 'auto') {
-      // Auto icon (computer/monitor)
       return (
         <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
           <path
@@ -92,14 +83,12 @@ export default function ThemeToggle() {
         </svg>
       );
     } else if (themeMode === 'light' || !effectiveIsDark) {
-      // Sun icon
       return (
         <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
           <path d="M10 15a5 5 0 100-10 5 5 0 000 10zM10 1a1 1 0 011 1v1a1 1 0 11-2 0V2a1 1 0 011-1zm0 15a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zm9-6a1 1 0 01-1 1h-1a1 1 0 110-2h1a1 1 0 011 1zM4 10a1 1 0 01-1 1H2a1 1 0 110-2h1a1 1 0 011 1zm11.657-6.657a1 1 0 010 1.414L15.95 5.464a1 1 0 01-1.414-1.414l-.707-.707a1 1 0 011.414-1.414l.707.707zM6.464 15.95a1 1 0 01-1.414 0l-.707-.707A1 1 0 015.757 13.83l.707.707a1 1 0 010 1.414zm10.193 0a1 1 0 01-1.414 0l-.707-.707a1 1 0 011.414-1.414l.707.707a1 1 0 010 1.414zM5.757 5.464A1 1 0 014.343 4.05l.707-.707A1 1 0 016.464 4.757l-.707.707z" />
         </svg>
       );
     } else {
-      // Moon icon
       return (
         <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
           <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />

@@ -36,6 +36,7 @@ const Projects = () => {
               whileHover={{ scale: 1.02, y: -5 }}
               className="card flex h-full flex-col overflow-hidden"
             >
+              {/* Project image */}
               {project.image && (
                 <div className="relative -m-6 mb-6 h-52 overflow-hidden rounded-t-xl">
                   <Image
@@ -50,14 +51,17 @@ const Projects = () => {
               )}
 
               <div className="flex flex-1 flex-col">
+                {/* Project title */}
                 <h3 className="mb-3 text-xl font-semibold text-neutral-900 dark:text-neutral-100">
                   {project.name}
                 </h3>
 
+                {/* Project description */}
                 <p className="mb-4 flex-1 leading-relaxed text-neutral-700 dark:text-neutral-300">
                   {project.description}
                 </p>
 
+                {/* Technologies */}
                 <div className="mb-6 flex flex-wrap gap-2">
                   {project.technologies.map((tech, techIndex) => (
                     <span
@@ -69,6 +73,7 @@ const Projects = () => {
                   ))}
                 </div>
 
+                {/* Project links */}
                 <div className="flex items-center justify-between border-t border-neutral-100 pt-4 dark:border-neutral-700">
                   <div className="flex space-x-4">
                     {project.repo && (
@@ -112,6 +117,7 @@ const Projects = () => {
                     )}
                   </div>
 
+                  {/* Project status indicator */}
                   <div className="flex items-center">
                     <div className="mr-2 h-2 w-2 rounded-full bg-green-500"></div>
                     <span className="text-xs text-neutral-600 dark:text-neutral-300">
@@ -125,6 +131,7 @@ const Projects = () => {
         ))}
       </div>
 
+      {/* View more projects link */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}

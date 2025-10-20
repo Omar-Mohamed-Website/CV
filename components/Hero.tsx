@@ -10,7 +10,6 @@ import ResumeDownload from './ResumeDownload';
 import SocialIcon from './SocialIcon';
 
 const Hero = () => {
-  // Fallback avatar if public/avatar.jpg is missing
   const [imgSrc, setImgSrc] = React.useState(profile.avatar);
   const fallbackSvg = React.useMemo(() => {
     const initials = profile.name
