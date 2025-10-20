@@ -91,7 +91,7 @@ const Footer = () => {
             <h4 className="mb-4 text-lg font-semibold dark:text-neutral-100">
               Let&apos;s Connect
             </h4>
-            <p className="mb-4 text-neutral-600 dark:text-neutral-400">
+            <p className="mb-4 text-neutral-300 dark:text-neutral-400">
               Let&apos;s connect and build something amazing together.
             </p>
 
@@ -168,7 +168,7 @@ const Footer = () => {
             {/* Email for direct contact */}
             <a
               href={`mailto:${profile.email}`}
-              className="-mx-2 inline-flex items-center rounded-md px-2 py-1 text-sm text-primary-400 transition-colors duration-200 hover:text-primary-300 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2 focus:ring-offset-neutral-900"
+              className="-mx-2 inline-flex items-center rounded-md px-2 py-1 text-sm text-primary-300 underline decoration-primary-700/40 underline-offset-2 transition-colors duration-200 hover:text-primary-200 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2 focus:ring-offset-neutral-900"
             >
               <svg
                 className="mr-2 h-4 w-4"
@@ -211,7 +211,7 @@ const Footer = () => {
               For permissions or copyright concerns, please contact:{' '}
               <a
                 href={`mailto:${profile.email}`}
-                className="text-primary-400 transition-colors duration-200 hover:text-primary-300 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2 focus:ring-offset-neutral-900"
+                className="text-primary-300 underline decoration-primary-700/40 underline-offset-2 transition-colors duration-200 hover:text-primary-200 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2 focus:ring-offset-neutral-900"
               >
                 {profile.email}
               </a>

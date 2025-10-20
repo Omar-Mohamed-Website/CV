@@ -136,7 +136,7 @@ const ContactForm = () => {
                   </h4>
                   <a
                     href={`mailto:${profile.email}`}
-                    className="text-primary-600 transition-colors duration-200 hover:text-primary-700 dark:text-primary-100 dark:hover:text-primary-50"
+                    className="text-primary-700 underline decoration-primary-200/60 underline-offset-2 transition-colors duration-200 hover:text-primary-800 dark:text-primary-100 dark:hover:text-primary-50"
                   >
                     {profile.email}
                   </a>

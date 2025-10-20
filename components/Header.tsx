@@ -166,14 +166,16 @@ const MobileMenu = ({
   };
 
   useEffect(() => {
-    if (!isOpen) return;
-
-    const handleScroll = () => {
-      setIsOpen(false);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    // Lock body scroll when menu is open for mobile stability
+    if (isOpen) {
+      const original = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      return () => {
+        document.body.style.overflow = original;
+      };
+    }
+    // No-op cleanup when closed to satisfy return type
+    return () => {};
   }, [isOpen]);
 
   return (
@@ -218,7 +220,7 @@ const MobileMenu = ({
         initial={{ x: '100%' }}
         animate={{ x: isOpen ? 0 : '100%' }}
         transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-        className="glass-strong fixed right-0 top-0 z-50 h-full w-72 md:hidden"
+        className="glass-strong fixed right-0 top-0 z-50 h-full w-72 overflow-y-auto md:hidden"
       >
         <div className="flex h-full flex-col p-6">
           <div className="mb-6 flex items-center justify-between border-b border-neutral-200 pb-4 dark:border-neutral-800">

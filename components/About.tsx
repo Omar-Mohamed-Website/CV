@@ -32,8 +32,8 @@ const About = () => {
               </h3>
               <p className="leading-relaxed text-neutral-700 dark:text-neutral-300">
                 Currently pursuing high school education at Martyr Colonel Ahmed
-                Jaber Nassar Secondary School in Mielec, Poland. Originally from
-                Egypt, I combine my passion for English education with content
+                Jaber Nassar Secondary School in Egypt. I now live in Mielec,
+                Poland. I combine my passion for English education with content
                 creation to help students learn effectively. Through YouTube,
                 Telegram, and TikTok, I've built a community of learners focused
                 on making English accessible and enjoyable for beginners.
