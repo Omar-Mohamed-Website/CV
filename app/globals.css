@@ -231,21 +231,27 @@
     0%,
     100% {
       transform: scale(1);
-      filter: drop-shadow(0 0 8px rgba(252, 165, 165, 0.7))
-        drop-shadow(0 0 16px rgba(252, 165, 165, 0.5));
+      /* iOS System Red: rgb(255, 59, 48) */
+      filter: drop-shadow(0 0 10px rgba(255, 59, 48, 0.75))
+        drop-shadow(0 0 20px rgba(255, 59, 48, 0.5));
       opacity: 1;
     }
     50% {
       transform: scale(1.1);
-      filter: drop-shadow(0 0 20px rgba(252, 165, 165, 1))
-        drop-shadow(0 0 40px rgba(252, 165, 165, 0.8))
-        drop-shadow(0 0 60px rgba(252, 165, 165, 0.5));
+      filter: drop-shadow(0 0 30px rgba(255, 59, 48, 1))
+        drop-shadow(0 0 60px rgba(255, 59, 48, 0.85))
+        drop-shadow(0 0 90px rgba(255, 59, 48, 0.6));
       opacity: 1;
     }
   }
+  /* Ensure the glow applies to the actual icon graphic */
   .strobe-icon-red {
+    position: relative;
+    will-change: transform, filter;
+  }
+  .strobe-icon-red :is(img, svg) {
     animation: strobeIconRed 1s ease-in-out infinite;
-    color: rgb(252, 165, 165) !important;
+    transform-origin: center;
   }
   .strobe-delay-half {
     animation-delay: 0.5s;
