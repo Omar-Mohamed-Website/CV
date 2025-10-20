@@ -213,6 +213,11 @@ export const profile: Profile = {
       issuer: 'SDK-Lotnik',
       date: '2024-03-16',
     },
+    {
+      name: 'IELTS Academic',
+      issuer: 'British Council / IDP: IELTS Australia',
+      date: '2025-10-20',
+    },
   ],
 
   projects: [

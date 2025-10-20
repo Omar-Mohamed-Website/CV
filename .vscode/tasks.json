@@ -6,6 +6,13 @@
       "type": "shell",
       "command": "open http://localhost:3001/",
       "group": "build"
+    },
+    {
+      "label": "Build and test",
+      "type": "shell",
+      "command": "npm run build && npm run test",
+      "problemMatcher": ["$tsc", "$eslint - stylish"],
+      "group": "build"
     }
   ]
 }

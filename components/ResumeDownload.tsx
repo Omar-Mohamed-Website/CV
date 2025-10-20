@@ -10,7 +10,7 @@ interface ResumeDownloadProps {
 const ResumeDownload = ({ variant = 'hero' }: ResumeDownloadProps) => {
   const handleDownload = () => {
     const basePath = process.env.NODE_ENV === 'production' ? '/CV' : '';
-    const pdfPath = `${basePath}/Omar Mohamed_CV.pdf`;
+    const pdfPath = `${basePath}/Omar Mohamed CV.pdf`;
     window.open(encodeURI(pdfPath), '_blank');
   };
 
