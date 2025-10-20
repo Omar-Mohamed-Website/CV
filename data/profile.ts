@@ -228,7 +228,7 @@ export const profile: Profile = {
         'CapCut',
       ],
       demo: 'https://www.youtube.com/@english_with_omarr',
-      image: '/projects/youtube-channel.svg',
+      image: `${basePath}/projects/youtube-channel.svg`,
     },
     {
       name: 'Telegram Study Community - English with Omar',
@@ -241,7 +241,7 @@ export const profile: Profile = {
         'Live Teaching',
       ],
       demo: 'https://t.me/english_with_omarr',
-      image: '/projects/telegram-community.svg',
+      image: `${basePath}/projects/telegram-community.svg`,
     },
   ],
 

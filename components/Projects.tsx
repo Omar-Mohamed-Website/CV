@@ -62,16 +62,22 @@ const Projects = () => {
                   {project.description}
                 </p>
 
-                {/* Static stats (update values in SocialStats.tsx) */}
+                {/* Real-time stats with auto-refresh */}
                 {project.demo &&
                   /youtube\.com|youtu\.be/.test(project.demo) && (
                     <div className="mb-4 rounded-lg bg-neutral-50 p-3 dark:bg-neutral-800">
-                      <SocialStats platform="youtube" />
+                      <SocialStats
+                        platform="youtube"
+                        channelId="UCOOt83vDj5b48W2oUIm1MQg"
+                      />
                     </div>
                   )}
                 {project.demo && /(^|\.)t\.me\//.test(project.demo) && (
                   <div className="mb-4 rounded-lg bg-neutral-50 p-3 dark:bg-neutral-800">
-                    <SocialStats platform="telegram" />
+                    <SocialStats
+                      platform="telegram"
+                      channelId="english_with_omarr"
+                    />
                   </div>
                 )}
 
