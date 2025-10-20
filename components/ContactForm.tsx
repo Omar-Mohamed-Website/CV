@@ -284,7 +284,7 @@ const ContactForm = () => {
                     <div className="flex flex-col items-center text-center">
                       <div className="relative mb-2 h-8 w-8">
                         <Image
-                          src="/warning-icon.png"
+                          src={`${process.env.NODE_ENV === 'production' ? '/Omar-Mohamed' : ''}/warning-icon.png`}
                           alt="Warning"
                           fill
                           className="object-contain"
