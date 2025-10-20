@@ -247,7 +247,7 @@ export const profile: Profile = {
 
   social: {
     linkedin: 'https://www.linkedin.com/in/omarmohameden/',
-    github: 'https://github.com/omarmohameden',
+    github: 'https://github.com/omarmohamed05',
     youtube: 'https://www.youtube.com/@english_with_omarr',
     telegram: 'https://t.me/english_with_omarr',
     website: 'https://omar-mohamed.dev',

@@ -126,15 +126,17 @@ const Footer = () => {
               )}
 
               {profile.social.github && (
-                <motion.div
-                  className="flex h-10 w-10 items-center justify-center rounded-lg bg-neutral-800 text-neutral-300 transition-all duration-200 hover:bg-primary-600 hover:text-white"
+                <motion.a
+                  href={profile.social.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex h-10 w-10 items-center justify-center rounded-lg bg-neutral-800 text-neutral-300 transition-all duration-200 hover:bg-primary-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2 focus:ring-offset-neutral-900"
                   whileHover={{ scale: 1.1, y: -2 }}
                   whileTap={{ scale: 0.95 }}
                   aria-label="GitHub"
-                  role="img"
                 >
                   <SocialIcon name="github" className="h-5 w-5" />
-                </motion.div>
+                </motion.a>
               )}
 
               {/* Twitter removed by request */}

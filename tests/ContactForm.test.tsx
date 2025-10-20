@@ -81,7 +81,7 @@ describe('ContactForm Component', () => {
     expect(screen.getByLabelText(/message/i)).toBeInTheDocument();
 
     expect(
-      screen.getByRole('button', { name: /send message/i })
+      screen.getByRole('button', { name: /unavailable/i })
     ).toBeInTheDocument();
   });
 
@@ -117,93 +117,34 @@ describe('ContactForm Component', () => {
     expect(messageField.tagName.toLowerCase()).toBe('textarea');
   });
 
-  it('handles form submission successfully', async () => {
+  it('shows overlay and disables form when temporarily unavailable', () => {
     render(<ContactForm />);
 
-    const nameField = screen.getByLabelText(/name/i);
-    const emailField = screen.getByLabelText(/email/i);
-    const messageField = screen.getByLabelText(/message/i);
-    const submitButton = screen.getByRole('button', { name: /send message/i });
+    // Overlay and warning box
+    expect(screen.getByText(/temporarily unavailable\./i)).toBeInTheDocument();
 
-    await user.type(nameField, 'John Doe');
-    await user.type(emailField, 'john@example.com');
-    await user.type(messageField, 'This is a test message');
+    // Inputs are disabled
+    expect(screen.getByLabelText(/name/i)).toBeDisabled();
+    expect(screen.getByLabelText(/email/i)).toBeDisabled();
+    expect(screen.getByLabelText(/message/i)).toBeDisabled();
 
-    await user.click(submitButton);
-
-    await waitFor(() => {
-      expect(fetch).toHaveBeenCalledWith('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name: 'Test User',
-          email: 'test@example.com',
-          message: 'Test message',
-        }),
-      });
-    });
-  });
-
-  it('handles form submission error', async () => {
-    (fetch as any).mockResolvedValue({
-      ok: false,
-      json: async () => ({ success: false, error: 'Server error' }),
-    });
-
-    render(<ContactForm />);
-
-    const submitButton = screen.getByRole('button', { name: /send message/i });
-
-    await user.click(submitButton);
-
-    await waitFor(() => {
-      expect(fetch).toHaveBeenCalled();
-    });
-  });
-
-  it('handles network error', async () => {
-    (fetch as any).mockRejectedValue(new Error('Network error'));
-
-    render(<ContactForm />);
-
-    const submitButton = screen.getByRole('button', { name: /send message/i });
-
-    await user.click(submitButton);
-
-    await waitFor(() => {
-      expect(fetch).toHaveBeenCalled();
-    });
-  });
-
-  it('disables submit button while submitting', async () => {
-    (fetch as any).mockImplementation(
-      () =>
-        new Promise((resolve) =>
-          setTimeout(
-            () =>
-              resolve({
-                ok: true,
-                json: async () => ({ success: true }),
-              }),
-            100
-          )
-        )
-    );
-
-    render(<ContactForm />);
-
-    const submitButton = screen.getByRole('button', { name: /send message/i });
-
-    await user.click(submitButton);
-
+    // Button reflects unavailable state
+    const submitButton = screen.getByRole('button', { name: /unavailable/i });
     expect(submitButton).toBeDisabled();
+  });
 
+  it('does not submit while locked', async () => {
+    render(<ContactForm />);
+    const submitButton = screen.getByRole('button', { name: /unavailable/i });
+    await user.click(submitButton);
     await waitFor(() => {
-      expect(submitButton).not.toBeDisabled();
+      expect(fetch).not.toHaveBeenCalled();
     });
   });
+
+  // When locked, we skip network error/success scenarios as submission is disabled.
+
+  // Submitting state test isn't applicable when the form is locked.
 
   it('has accessible form labels and error messages', () => {
     render(<ContactForm />);
@@ -233,20 +174,15 @@ describe('ContactForm Component', () => {
     expect(githubLink).toBeInTheDocument();
   });
 
-  it('has proper keyboard navigation', async () => {
+  it('marks inputs as disabled when unavailable', () => {
     render(<ContactForm />);
 
     const nameField = screen.getByLabelText(/name/i);
     const emailField = screen.getByLabelText(/email/i);
     const messageField = screen.getByLabelText(/message/i);
 
-    nameField.focus();
-    expect(nameField).toHaveFocus();
-
-    await user.tab();
-    expect(emailField).toHaveFocus();
-
-    await user.tab();
-    expect(messageField).toHaveFocus();
+    expect(nameField).toBeDisabled();
+    expect(emailField).toBeDisabled();
+    expect(messageField).toBeDisabled();
   });
 });

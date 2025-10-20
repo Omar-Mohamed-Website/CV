@@ -171,15 +171,17 @@ const Hero = () => {
             )}
 
             {profile.social.github && (
-              <motion.div
-                className="rounded-md p-1 text-neutral-600 transition-colors duration-200 hover:text-primary-600 dark:text-neutral-400 dark:hover:text-primary-100"
+              <motion.a
+                href={profile.social.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-md p-1 text-neutral-600 transition-colors duration-200 hover:text-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2 dark:text-neutral-400 dark:hover:text-primary-100"
                 whileHover={{ scale: 1.1, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                aria-label="GitHub"
-                role="img"
+                aria-label="GitHub profile"
               >
                 <SocialIcon name="github" className="h-6 w-6" />
-              </motion.div>
+              </motion.a>
             )}
 
             {/* Twitter removed by request */}

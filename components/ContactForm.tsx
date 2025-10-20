@@ -15,6 +15,8 @@ interface ContactFormData {
 }
 
 const ContactForm = () => {
+  // Maintenance/temporary lock flag for the entire contact section
+  const isLocked = true;
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<
     'idle' | 'success' | 'error'
@@ -29,6 +31,10 @@ const ContactForm = () => {
   } = useForm<ContactFormData>();
 
   const onSubmit = async (data: ContactFormData) => {
+    if (isLocked) {
+      // Prevent submitting while the contact section is temporarily unavailable
+      return;
+    }
     setIsSubmitting(true);
     setSubmitStatus('idle');
 
@@ -86,8 +92,36 @@ const ContactForm = () => {
         </p>
       </motion.div>
 
-      <div className="mx-auto max-w-4xl">
-        <div className="grid gap-12 md:grid-cols-2">
+      <div className="relative mx-auto max-w-4xl">
+        {/* Shade overlay and warning box */}
+        {isLocked && (
+          <>
+            <div
+              className="pointer-events-auto absolute inset-0 z-20 bg-black/50 backdrop-blur-[1px]"
+              aria-hidden="true"
+            />
+            <div className="pointer-events-none absolute left-1/2 top-6 z-30 -translate-x-1/2">
+              <div className="mx-auto w-max rounded-lg border border-yellow-300 bg-yellow-50/90 px-4 py-3 text-yellow-900 shadow-lg dark:border-yellow-700 dark:bg-yellow-900/80 dark:text-yellow-100">
+                <div className="flex flex-col items-center text-center">
+                  <svg
+                    className="mb-2 h-6 w-6 text-yellow-600 dark:text-yellow-200"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0zM12 9v4m0 4h.01" />
+                  </svg>
+                  <p className="text-sm font-semibold">
+                    Temporarily Unavailable.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </>
+        )}
+        <div
+          className={`grid gap-12 md:grid-cols-2 ${isLocked ? 'pointer-events-none select-none opacity-90' : ''}`}
+        >
           {/* Contact Information */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -217,13 +251,15 @@ const ContactForm = () => {
                 )}
 
                 {profile.social.github && (
-                  <div
+                  <a
+                    href={profile.social.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="flex h-10 w-10 items-center justify-center rounded-lg bg-neutral-100 text-neutral-600 transition-colors duration-200 hover:bg-primary-100 hover:text-primary-600 dark:bg-neutral-800 dark:text-neutral-400 dark:hover:bg-primary-100/20 dark:hover:text-primary-100"
                     aria-label="GitHub"
-                    role="img"
                   >
                     <SocialIcon name="github" className="h-5 w-5" />
-                  </div>
+                  </a>
                 )}
 
                 {/* Twitter removed by request */}
@@ -287,7 +323,8 @@ const ContactForm = () => {
                   })}
                   className={`w-full rounded-lg border px-4 py-3 transition-colors duration-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-300 ${
                     errors.name ? 'border-red-300' : 'border-neutral-300'
-                  }`}
+                  } ${isLocked ? 'cursor-not-allowed opacity-60' : ''}`}
+                  disabled={isLocked}
                   placeholder="Your full name"
                   aria-describedby={errors.name ? 'name-error' : undefined}
                 />
@@ -322,7 +359,8 @@ const ContactForm = () => {
                   })}
                   className={`w-full rounded-lg border px-4 py-3 transition-colors duration-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-300 ${
                     errors.email ? 'border-red-300' : 'border-neutral-300'
-                  }`}
+                  } ${isLocked ? 'cursor-not-allowed opacity-60' : ''}`}
+                  disabled={isLocked}
                   placeholder="your.email@example.com"
                   aria-describedby={errors.email ? 'email-error' : undefined}
                 />
@@ -357,7 +395,8 @@ const ContactForm = () => {
                   })}
                   className={`resize-vertical w-full rounded-lg border px-4 py-3 transition-colors duration-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-300 ${
                     errors.message ? 'border-red-300' : 'border-neutral-300'
-                  }`}
+                  } ${isLocked ? 'cursor-not-allowed opacity-60' : ''}`}
+                  disabled={isLocked}
                   placeholder="Tell me about your project, opportunity, or just say hello!"
                   aria-describedby={
                     errors.message ? 'message-error' : undefined
@@ -386,9 +425,9 @@ const ContactForm = () => {
               {/* Submit button */}
               <motion.button
                 type="submit"
-                disabled={isSubmitting}
+                disabled={isSubmitting || isLocked}
                 className={`btn btn-lg btn-primary w-full ${
-                  isSubmitting
+                  isSubmitting || isLocked
                     ? 'cursor-not-allowed opacity-50'
                     : 'hover:scale-105'
                 }`}
@@ -434,13 +473,13 @@ const ContactForm = () => {
                         d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
                       />
                     </svg>
-                    <span>Send Message</span>
+                    <span>{isLocked ? 'Unavailable' : 'Send Message'}</span>
                   </div>
                 )}
               </motion.button>
 
               {/* Submit status message */}
-              {submitStatus !== 'idle' && (
+              {!isLocked && submitStatus !== 'idle' && (
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
