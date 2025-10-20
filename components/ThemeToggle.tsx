@@ -108,7 +108,7 @@ export default function ThemeToggle() {
       type="button"
       onClick={cycleTheme}
       aria-label={`Current theme: ${getLabel()}. Click to cycle themes.`}
-      className="inline-flex items-center justify-center rounded-md p-2 text-neutral-600 transition-colors hover:bg-neutral-50 hover:text-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2 dark:text-neutral-300 dark:hover:bg-neutral-800 dark:hover:text-primary-100 dark:focus:ring-offset-neutral-900"
+      className="inline-flex items-center justify-center rounded-md p-2 text-neutral-600 transition-colors hover:bg-neutral-50 hover:text-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2 dark:text-neutral-200 dark:hover:bg-slate-800 dark:hover:text-primary-200 dark:focus:ring-offset-slate-950"
       data-testid="theme-toggle"
       title={getLabel()}
     >

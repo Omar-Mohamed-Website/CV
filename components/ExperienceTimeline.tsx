@@ -83,7 +83,7 @@ const ExperienceTimeline = () => {
                     </div>
                   </div>
 
-                  <p className="mb-4 leading-relaxed text-neutral-700 dark:text-neutral-300">
+                  <p className="mb-4 leading-relaxed text-neutral-700 dark:text-neutral-200">
                     {exp.description}
                   </p>
 
@@ -92,7 +92,7 @@ const ExperienceTimeline = () => {
                       {exp.technologies.map((tech, techIndex) => (
                         <span
                           key={techIndex}
-                          className="rounded-md bg-neutral-100 px-2 py-1 text-xs font-medium text-neutral-600 dark:bg-neutral-700 dark:text-neutral-300"
+                          className="rounded-md bg-neutral-100 px-2 py-1 text-xs font-medium text-neutral-600 dark:bg-slate-800 dark:text-neutral-200"
                         >
                           {tech}
                         </span>

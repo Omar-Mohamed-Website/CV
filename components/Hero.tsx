@@ -74,7 +74,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 1.0 }}
-            className="mb-8 flex items-center justify-center text-neutral-700 dark:text-neutral-300 lg:justify-start"
+            className="mb-8 flex items-center justify-center text-neutral-700 dark:text-neutral-200 lg:justify-start"
           >
             <svg
               className="mr-2 h-5 w-5"
@@ -95,7 +95,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 1.2 }}
-            className="mb-8 max-w-2xl text-lg leading-relaxed text-neutral-700 dark:text-neutral-300"
+            className="mb-8 max-w-2xl text-lg leading-relaxed text-neutral-700 dark:text-neutral-200"
           >
             {profile.summary}
           </motion.p>
@@ -148,7 +148,7 @@ const Hero = () => {
                 href={profile.social.telegram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-md p-1 text-neutral-600 transition-colors duration-200 hover:text-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2 dark:text-neutral-400 dark:hover:text-primary-100"
+                className="rounded-md p-1 text-neutral-600 transition-colors duration-200 hover:text-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2 dark:text-neutral-200 dark:hover:text-primary-200"
                 whileHover={{ scale: 1.1, y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 aria-label="Telegram channel"
@@ -161,7 +161,7 @@ const Hero = () => {
                 href={profile.social.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-md p-1 text-neutral-600 transition-colors duration-200 hover:text-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2 dark:text-neutral-400 dark:hover:text-primary-100"
+                className="rounded-md p-1 text-neutral-600 transition-colors duration-200 hover:text-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2 dark:text-neutral-200 dark:hover:text-primary-200"
                 whileHover={{ scale: 1.1, y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 aria-label="LinkedIn profile"
@@ -175,7 +175,7 @@ const Hero = () => {
                 href={profile.social.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-md p-1 text-neutral-600 transition-colors duration-200 hover:text-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2 dark:text-neutral-400 dark:hover:text-primary-100"
+                className="rounded-md p-1 text-neutral-600 transition-colors duration-200 hover:text-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2 dark:text-neutral-200 dark:hover:text-primary-200"
                 whileHover={{ scale: 1.1, y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 aria-label="GitHub profile"
@@ -189,7 +189,7 @@ const Hero = () => {
             {profile.social.email && (
               <motion.a
                 href={`mailto:${profile.social.email}`}
-                className="rounded-md p-1 text-neutral-600 transition-colors duration-200 hover:text-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2 dark:text-neutral-400 dark:hover:text-primary-100"
+                className="rounded-md p-1 text-neutral-600 transition-colors duration-200 hover:text-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2 dark:text-neutral-200 dark:hover:text-primary-200"
                 whileHover={{ scale: 1.1, y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 aria-label="Send email"
@@ -212,7 +212,7 @@ const Hero = () => {
             className="relative h-80 w-80 md:h-96 md:w-96"
           >
             <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary-400 to-primary-600 opacity-20 blur-xl"></div>
-            <div className="relative h-full w-full overflow-hidden rounded-full border-4 border-white shadow-2xl dark:border-neutral-700">
+            <div className="relative h-full w-full overflow-hidden rounded-full border-4 border-white shadow-2xl dark:border-slate-800">
               <Image
                 src={imgSrc}
                 alt={`${profile.name} - ${profile.title}`}
@@ -237,7 +237,7 @@ const Hero = () => {
         <motion.div
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
-          className="cursor-pointer text-neutral-400 transition-colors duration-200 hover:text-primary-600 dark:text-neutral-400 dark:hover:text-primary-100"
+          className="cursor-pointer text-neutral-400 transition-colors duration-200 hover:text-primary-600 dark:text-neutral-300 dark:hover:text-primary-200"
           onClick={() =>
             document
               .getElementById('about')

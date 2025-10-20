@@ -87,7 +87,7 @@
   }
 
   .btn-secondary {
-    @apply rounded-md border border-white/30 bg-white/20 font-medium text-neutral-900 shadow-sm backdrop-blur-md transition-colors duration-200 hover:bg-white/30 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2 dark:border-white/10 dark:bg-white/10 dark:text-neutral-100 dark:hover:bg-white/15 dark:focus:ring-offset-neutral-900;
+    @apply rounded-md border border-white/30 bg-white/20 font-medium text-neutral-900 shadow-sm backdrop-blur-md transition-colors duration-200 hover:bg-white/30 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2 dark:border-primary-400/30 dark:bg-primary-900/40 dark:text-white dark:hover:bg-primary-800/50 dark:focus:ring-offset-slate-950;
   }
 
   /* Button sizing and layout utilities */
@@ -108,7 +108,7 @@
   }
 
   .section-subheading {
-    @apply mx-auto mb-8 max-w-2xl text-lg leading-relaxed text-neutral-700 dark:text-neutral-300;
+    @apply mx-auto mb-8 max-w-2xl text-lg leading-relaxed text-neutral-700 dark:text-neutral-200;
   }
 
   .container-responsive {
@@ -116,7 +116,18 @@
   }
 
   .card {
-    @apply rounded-xl border border-neutral-200 bg-white/75 p-5 shadow-xl backdrop-blur-2xl transition-all duration-200 hover:shadow-2xl dark:border-white/10 dark:bg-neutral-900/80 dark:shadow-neutral-900/40 sm:p-6;
+    @apply rounded-xl border border-neutral-200 bg-white/75 p-5 shadow-xl backdrop-blur-2xl transition-all duration-200 hover:shadow-2xl dark:border-primary-400/20 dark:bg-slate-900/90 dark:shadow-black/50 sm:p-6;
+  }
+
+  .dark .card {
+    background-image: linear-gradient(
+      to bottom right,
+      rgba(2, 81, 89, 0.15),
+      rgba(1, 37, 42, 0.2)
+    );
+  }
+
+  .card:not(.dark .card) {
     background-image: linear-gradient(
       to bottom right,
       rgba(255, 255, 255, 0.6),
@@ -125,7 +136,7 @@
   }
 
   .skill-bar {
-    @apply h-2 overflow-hidden rounded-full bg-neutral-200 dark:bg-neutral-700;
+    @apply h-2 overflow-hidden rounded-full bg-neutral-200 dark:bg-slate-800;
   }
 
   .skill-progress {
@@ -158,7 +169,18 @@
 /* Glass utilities and liquid background */
 @layer utilities {
   .glass {
-    @apply rounded-xl border border-neutral-200 bg-white/65 backdrop-blur-2xl dark:border-white/10 dark:bg-neutral-900/80;
+    @apply rounded-xl border border-neutral-200 bg-white/65 backdrop-blur-2xl dark:border-primary-400/20 dark:bg-slate-900/85;
+  }
+
+  .dark .glass {
+    background-image: linear-gradient(
+      to bottom right,
+      rgba(2, 81, 89, 0.2),
+      rgba(1, 23, 27, 0.3)
+    );
+  }
+
+  .glass:not(.dark .glass) {
     background-image: linear-gradient(
       to bottom right,
       rgba(255, 255, 255, 0.5),
@@ -166,7 +188,7 @@
     );
   }
   .glass-strong {
-    @apply rounded-2xl border border-neutral-200 bg-white/50 shadow-xl backdrop-blur-2xl dark:border-white/10 dark:bg-neutral-900/80;
+    @apply rounded-2xl border border-neutral-200 bg-white/50 shadow-xl backdrop-blur-2xl dark:border-primary-400/25 dark:bg-slate-950/95 dark:shadow-black/60;
   }
   /* Strobe animation for contact warning */
   @keyframes strobeBox {

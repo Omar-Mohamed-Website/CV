@@ -57,7 +57,7 @@ const Projects = () => {
                 </h3>
 
                 {/* Project description */}
-                <p className="mb-4 flex-1 leading-relaxed text-neutral-700 dark:text-neutral-300">
+                <p className="mb-4 flex-1 leading-relaxed text-neutral-700 dark:text-neutral-200">
                   {project.description}
                 </p>
 
@@ -74,14 +74,14 @@ const Projects = () => {
                 </div>
 
                 {/* Project links */}
-                <div className="flex items-center justify-between border-t border-neutral-100 pt-4 dark:border-neutral-700">
+                <div className="flex items-center justify-between border-t border-neutral-100 pt-4 dark:border-slate-700">
                   <div className="flex space-x-4">
                     {project.repo && (
                       <motion.a
                         href={project.repo}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="btn btn-sm rounded-md font-medium text-neutral-600 transition-colors duration-200 hover:text-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2 dark:text-neutral-400 dark:hover:text-primary-100"
+                        className="btn btn-sm rounded-md font-medium text-neutral-600 transition-colors duration-200 hover:text-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2 dark:text-neutral-200 dark:hover:text-primary-200"
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                       >

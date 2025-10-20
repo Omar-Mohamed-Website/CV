@@ -73,7 +73,7 @@ const Header = () => {
       transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
       className={`fixed left-0 right-0 top-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'glass border-b border-white/40 dark:border-white/10'
+          ? 'glass border-b border-white/40 dark:border-primary-400/20'
           : 'bg-transparent'
       }`}
       role="banner"
@@ -92,7 +92,7 @@ const Header = () => {
           >
             <button
               onClick={() => scrollToSection('hero')}
-              className="text-lg font-semibold tracking-tight text-neutral-900 transition-colors duration-200 hover:text-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-400/50 focus:ring-offset-0 dark:text-neutral-100 dark:hover:text-primary-100"
+              className="text-lg font-semibold tracking-tight text-neutral-900 transition-colors duration-200 hover:text-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-400/50 focus:ring-offset-0 dark:text-white dark:hover:text-primary-200"
               aria-label="Go to top of page"
             >
               {profile.name.split(' ')[0]} {profile.name.split(' ')[1]}
@@ -107,8 +107,8 @@ const Header = () => {
                 onClick={() => scrollToSection(item.id)}
                 className={`relative rounded-lg px-3 py-1.5 text-sm font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary-400/50 focus:ring-offset-0 ${
                   activeSection === item.id
-                    ? 'text-primary-600 dark:text-primary-100'
-                    : 'text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100'
+                    ? 'text-primary-600 dark:text-primary-200'
+                    : 'text-neutral-600 hover:text-neutral-900 dark:text-neutral-300 dark:hover:text-white'
                 }`}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
@@ -119,7 +119,7 @@ const Header = () => {
                 {activeSection === item.id && (
                   <motion.div
                     layoutId="activeSection"
-                    className="absolute inset-0 rounded-lg bg-primary-50/50 dark:bg-primary-100/10"
+                    className="absolute inset-0 rounded-lg bg-primary-50/50 dark:bg-primary-900/30"
                     style={{ zIndex: -1 }}
                     transition={{ type: 'spring', duration: 0.5, bounce: 0.2 }}
                   />
@@ -127,7 +127,7 @@ const Header = () => {
               </motion.button>
             ))}
 
-            <div className="ml-2 flex items-center gap-2 border-l border-neutral-200 pl-3 dark:border-neutral-700">
+            <div className="ml-2 flex items-center gap-2 border-l border-neutral-200 pl-3 dark:border-slate-700">
               <ThemeToggle />
               <ResumeDownload variant="header" />
             </div>
@@ -182,7 +182,7 @@ const MobileMenu = ({
     <>
       <button
         onClick={toggleMenu}
-        className="rounded-lg p-2 text-neutral-700 transition-colors duration-200 hover:bg-neutral-100 hover:text-neutral-900 focus:outline-none focus:ring-2 focus:ring-primary-400/50 dark:text-neutral-300 dark:hover:bg-neutral-800 dark:hover:text-neutral-100"
+        className="rounded-lg p-2 text-neutral-700 transition-colors duration-200 hover:bg-neutral-100 hover:text-neutral-900 focus:outline-none focus:ring-2 focus:ring-primary-400/50 dark:text-neutral-200 dark:hover:bg-slate-800 dark:hover:text-white"
         aria-label="Toggle mobile menu"
         aria-expanded={isOpen}
       >
@@ -223,13 +223,13 @@ const MobileMenu = ({
         className="glass-strong fixed right-0 top-0 z-50 h-full w-72 overflow-y-auto md:hidden"
       >
         <div className="flex h-full flex-col p-6">
-          <div className="mb-6 flex items-center justify-between border-b border-neutral-200 pb-4 dark:border-neutral-800">
+          <div className="mb-6 flex items-center justify-between border-b border-neutral-200 pb-4 dark:border-slate-800">
             <h2 className="text-base font-semibold text-neutral-900 dark:text-neutral-100">
               Menu
             </h2>
             <button
               onClick={toggleMenu}
-              className="rounded-lg p-1.5 text-neutral-500 transition-colors duration-200 hover:bg-neutral-100 hover:text-neutral-700 focus:outline-none focus:ring-2 focus:ring-primary-400/50 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-200"
+              className="rounded-lg p-1.5 text-neutral-500 transition-colors duration-200 hover:bg-neutral-100 hover:text-neutral-700 focus:outline-none focus:ring-2 focus:ring-primary-400/50 dark:text-neutral-300 dark:hover:bg-slate-800 dark:hover:text-white"
               aria-label="Close menu"
             >
               <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
@@ -253,8 +253,8 @@ const MobileMenu = ({
                 onClick={() => handleItemClick(item.id)}
                 className={`block w-full rounded-lg px-3 py-2.5 text-left text-sm font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary-400/50 ${
                   activeSection === item.id
-                    ? 'bg-primary-50 text-primary-600 dark:bg-primary-100/10 dark:text-primary-100'
-                    : 'text-neutral-700 hover:bg-neutral-50 hover:text-neutral-900 dark:text-neutral-300 dark:hover:bg-neutral-800/50 dark:hover:text-neutral-100'
+                    ? 'bg-primary-50 text-primary-600 dark:bg-primary-900/30 dark:text-primary-200'
+                    : 'text-neutral-700 hover:bg-neutral-50 hover:text-neutral-900 dark:text-neutral-200 dark:hover:bg-slate-800/70 dark:hover:text-white'
                 }`}
                 aria-current={activeSection === item.id ? 'page' : undefined}
               >
@@ -263,9 +263,9 @@ const MobileMenu = ({
             ))}
           </nav>
 
-          <div className="space-y-3 border-t border-neutral-200 pt-4 dark:border-neutral-800">
-            <div className="flex items-center justify-between rounded-lg bg-neutral-50 px-3 py-2.5 dark:bg-neutral-800/50">
-              <span className="text-sm font-medium text-neutral-600 dark:text-neutral-400">
+          <div className="space-y-3 border-t border-neutral-200 pt-4 dark:border-slate-800">
+            <div className="flex items-center justify-between rounded-lg bg-neutral-50 px-3 py-2.5 dark:bg-slate-800/70">
+              <span className="text-sm font-medium text-neutral-600 dark:text-neutral-300">
                 Theme
               </span>
               <ThemeToggle />

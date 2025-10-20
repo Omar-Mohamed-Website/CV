@@ -30,7 +30,7 @@ const About = () => {
               <h3 className="mb-4 text-xl font-semibold text-neutral-900 dark:text-neutral-100">
                 Background
               </h3>
-              <p className="leading-relaxed text-neutral-700 dark:text-neutral-300">
+              <p className="leading-relaxed text-neutral-700 dark:text-neutral-200">
                 Currently pursuing high school education at Martyr Colonel Ahmed
                 Jaber Nassar Secondary School in Egypt. I now live in Mielec,
                 Poland. I combine my passion for English education with content
@@ -50,7 +50,7 @@ const About = () => {
               <h3 className="mb-4 text-xl font-semibold text-neutral-900 dark:text-neutral-100">
                 Focus Areas
               </h3>
-              <ul className="space-y-2 text-neutral-700 dark:text-neutral-300">
+              <ul className="space-y-2 text-neutral-700 dark:text-neutral-200">
                 <li className="flex items-start">
                   <span className="mr-3 mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-primary-500"></span>
                   English Teaching & Tutoring for Beginners

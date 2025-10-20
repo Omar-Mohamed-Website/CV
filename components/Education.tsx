@@ -66,7 +66,7 @@ const Education = () => {
 
               {edu.gpa && (
                 <div className="mb-3">
-                  <span className="text-sm font-medium text-neutral-600 dark:text-neutral-400">
+                  <span className="text-sm font-medium text-neutral-600 dark:text-neutral-300">
                     GPA:{' '}
                     <span className="text-neutral-900 dark:text-neutral-100">
                       {edu.gpa}
@@ -76,14 +76,14 @@ const Education = () => {
               )}
 
               {edu.description && (
-                <p className="flex-1 leading-relaxed text-neutral-700 dark:text-neutral-300">
+                <p className="flex-1 leading-relaxed text-neutral-700 dark:text-neutral-200">
                   {edu.description}
                 </p>
               )}
 
               {/* Academic achievement indicator */}
-              <div className="mt-auto border-t border-neutral-100 pt-4 dark:border-neutral-700">
-                <div className="flex items-center text-sm font-medium text-neutral-700 dark:text-neutral-300">
+              <div className="mt-auto border-t border-neutral-100 pt-4 dark:border-slate-700">
+                <div className="flex items-center text-sm font-medium text-neutral-700 dark:text-neutral-200">
                   <svg
                     className="mr-2 h-4 w-4 text-primary-500 dark:text-primary-100"
                     fill="currentColor"

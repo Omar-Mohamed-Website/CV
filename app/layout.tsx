@@ -17,7 +17,7 @@ export const viewport: Viewport = {
   userScalable: true,
   themeColor: [
     { media: '(prefers-color-scheme: light)', color: '#ffffff' },
-    { media: '(prefers-color-scheme: dark)', color: '#0F172A' },
+    { media: '(prefers-color-scheme: dark)', color: '#020617' },
   ],
 };
 
@@ -126,7 +126,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="bg-white font-sans text-neutral-900 antialiased selection:bg-primary-100 selection:text-primary-800 dark:bg-neutral-900 dark:text-neutral-100 dark:selection:bg-primary-700 dark:selection:text-white">
+      <body className="bg-white font-sans text-neutral-900 antialiased selection:bg-primary-100 selection:text-primary-800 dark:bg-slate-950 dark:text-neutral-50 dark:selection:bg-primary-700 dark:selection:text-white">
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-primary-500 focus:px-4 focus:py-2 focus:text-white focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-primary-300"

@@ -52,7 +52,7 @@ const Skills = () => {
             viewport={{ once: true }}
             className="card"
           >
-            <h3 className="mb-6 border-b border-neutral-100 pb-3 text-lg font-semibold text-neutral-900 dark:border-neutral-700 dark:text-neutral-100">
+            <h3 className="mb-6 border-b border-neutral-100 pb-3 text-lg font-semibold text-neutral-900 dark:border-slate-700 dark:text-neutral-100">
               {category}
             </h3>
 
@@ -60,10 +60,10 @@ const Skills = () => {
               {skillsByCategory[category].map((skill, skillIndex) => (
                 <div key={skill.name} className="skill-item">
                   <div className="mb-2 flex items-center justify-between">
-                    <span className="text-sm font-medium text-neutral-700 dark:text-neutral-300">
+                    <span className="text-sm font-medium text-neutral-700 dark:text-neutral-200">
                       {skill.name}
                     </span>
-                    <span className="text-xs text-neutral-500 dark:text-neutral-400">
+                    <span className="text-xs text-neutral-500 dark:text-neutral-300">
                       {skill.level}%
                     </span>
                   </div>
@@ -102,7 +102,7 @@ const Skills = () => {
             <div className="mb-2 text-2xl font-bold text-primary-600 dark:text-primary-100">
               {profile.skills.length}
             </div>
-            <div className="text-sm text-neutral-600 dark:text-neutral-400">
+            <div className="text-sm text-neutral-600 dark:text-neutral-300">
               Technical Skills
             </div>
           </div>
@@ -111,7 +111,7 @@ const Skills = () => {
             <div className="mb-2 text-2xl font-bold text-primary-600 dark:text-primary-100">
               {categories.length}
             </div>
-            <div className="text-sm text-neutral-600 dark:text-neutral-400">
+            <div className="text-sm text-neutral-600 dark:text-neutral-300">
               Skill Categories
             </div>
           </div>
@@ -123,7 +123,7 @@ const Skills = () => {
                   profile.skills.length
               )}
             </div>
-            <div className="text-sm text-neutral-600 dark:text-neutral-400">
+            <div className="text-sm text-neutral-600 dark:text-neutral-300">
               Avg. Proficiency
             </div>
           </div>
@@ -132,7 +132,7 @@ const Skills = () => {
             <div className="mb-2 text-2xl font-bold text-primary-600 dark:text-primary-100">
               {profile.experience.length}+
             </div>
-            <div className="text-sm text-neutral-600 dark:text-neutral-400">
+            <div className="text-sm text-neutral-600 dark:text-neutral-300">
               Years Experience
             </div>
           </div>

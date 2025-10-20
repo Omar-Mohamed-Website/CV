@@ -14,7 +14,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-neutral-900 py-16 text-white">
+    <footer className="bg-slate-950 py-16 text-white">
       <div className="container-responsive">
         <div className="mb-12 grid gap-8 md:grid-cols-3">
           {/* Brand and description */}
@@ -91,7 +91,7 @@ const Footer = () => {
             <h4 className="mb-4 text-lg font-semibold dark:text-neutral-100">
               Let&apos;s Connect
             </h4>
-            <p className="mb-4 text-neutral-300 dark:text-neutral-400">
+            <p className="mb-4 text-neutral-300 dark:text-neutral-200">
               Let&apos;s connect and build something amazing together.
             </p>
 
@@ -102,7 +102,7 @@ const Footer = () => {
                   href={profile.social.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex h-10 w-10 items-center justify-center rounded-lg bg-neutral-800 text-neutral-300 transition-all duration-200 hover:bg-primary-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2 focus:ring-offset-neutral-900"
+                  className="flex h-10 w-10 items-center justify-center rounded-lg bg-slate-800 text-neutral-200 transition-all duration-200 hover:bg-primary-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2 focus:ring-offset-slate-950"
                   whileHover={{ scale: 1.1, y: -2 }}
                   whileTap={{ scale: 0.95 }}
                   aria-label="LinkedIn"
@@ -116,7 +116,7 @@ const Footer = () => {
                   href={profile.social.telegram}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex h-10 w-10 items-center justify-center rounded-lg bg-neutral-800 text-neutral-300 transition-all duration-200 hover:bg-primary-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2 focus:ring-offset-neutral-900"
+                  className="flex h-10 w-10 items-center justify-center rounded-lg bg-slate-800 text-neutral-200 transition-all duration-200 hover:bg-primary-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2 focus:ring-offset-slate-950"
                   whileHover={{ scale: 1.1, y: -2 }}
                   whileTap={{ scale: 0.95 }}
                   aria-label="Telegram"
@@ -130,7 +130,7 @@ const Footer = () => {
                   href={profile.social.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex h-10 w-10 items-center justify-center rounded-lg bg-neutral-800 text-neutral-300 transition-all duration-200 hover:bg-primary-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2 focus:ring-offset-neutral-900"
+                  className="flex h-10 w-10 items-center justify-center rounded-lg bg-slate-800 text-neutral-200 transition-all duration-200 hover:bg-primary-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2 focus:ring-offset-slate-950"
                   whileHover={{ scale: 1.1, y: -2 }}
                   whileTap={{ scale: 0.95 }}
                   aria-label="GitHub"
@@ -143,7 +143,7 @@ const Footer = () => {
 
               <motion.a
                 href={`mailto:${profile.email}`}
-                className="btn btn-sm rounded-md bg-neutral-800 text-neutral-300 transition-all duration-200 hover:bg-primary-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2 focus:ring-offset-neutral-900"
+                className="btn btn-sm rounded-md bg-slate-800 text-neutral-200 transition-all duration-200 hover:bg-primary-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2 focus:ring-offset-slate-950"
                 whileHover={{ scale: 1.1, y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 aria-label="Email"
@@ -194,9 +194,9 @@ const Footer = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
           viewport={{ once: true }}
-          className="border-t border-neutral-800 pt-8"
+          className="border-t border-slate-800 pt-8"
         >
-          <div className="mb-6 rounded-lg bg-neutral-800/50 p-6">
+          <div className="mb-6 rounded-lg bg-slate-900/70 p-6">
             <h4 className="mb-3 text-sm font-semibold text-neutral-200">
               © {currentYear} {profile.name}. All rights reserved.
             </h4>

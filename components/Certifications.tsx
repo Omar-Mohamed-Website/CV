@@ -82,7 +82,7 @@ const Certifications = () => {
                     </span>
                   </span>
                   {cert.expiryDate && (
-                    <span className="mt-1 block text-sm text-neutral-600 dark:text-neutral-400">
+                    <span className="mt-1 block text-sm text-neutral-600 dark:text-neutral-300">
                       Expires:{' '}
                       <span className="font-medium text-neutral-900 dark:text-neutral-100">
                         {formatDateEU(cert.expiryDate)}
@@ -145,11 +145,11 @@ const Certifications = () => {
               <div className="mb-1 text-2xl font-bold text-primary-600 dark:text-primary-100">
                 {profile.certifications.length}
               </div>
-              <div className="text-sm text-neutral-600 dark:text-neutral-400">
+              <div className="text-sm text-neutral-600 dark:text-neutral-300">
                 Active Certifications
               </div>
             </div>
-            <div className="h-8 w-px bg-neutral-200 dark:bg-neutral-700"></div>
+            <div className="h-8 w-px bg-neutral-200 dark:bg-slate-700"></div>
             <div className="text-center">
               <div className="mb-1 text-2xl font-bold text-primary-600 dark:text-primary-100">
                 {
@@ -157,16 +157,16 @@ const Certifications = () => {
                     .size
                 }
               </div>
-              <div className="text-sm text-neutral-600 dark:text-neutral-400">
+              <div className="text-sm text-neutral-600 dark:text-neutral-300">
                 Certifying Bodies
               </div>
             </div>
-            <div className="h-8 w-px bg-neutral-200 dark:bg-neutral-700"></div>
+            <div className="h-8 w-px bg-neutral-200 dark:bg-slate-700"></div>
             <div className="text-center">
               <div className="mb-1 text-2xl font-bold text-primary-600 dark:text-primary-100">
                 {new Date().getFullYear() - 2023}+
               </div>
-              <div className="text-sm text-neutral-600 dark:text-neutral-400">
+              <div className="text-sm text-neutral-600 dark:text-neutral-300">
                 Years Certified
               </div>
             </div>

@@ -106,7 +106,7 @@ const ContactForm = () => {
             <h3 className="mb-6 text-xl font-semibold text-neutral-900 dark:text-neutral-100 sm:text-2xl">
               Let&apos;s Start a Conversation
             </h3>
-            <p className="mb-8 leading-relaxed text-neutral-700 dark:text-neutral-300">
+            <p className="mb-8 leading-relaxed text-neutral-700 dark:text-neutral-200">
               Whether you’re looking for English tutoring, have a learning idea
               in mind, or just want to connect, I’d love to hear from you. I’m
               always open to opportunities and collaborations in education and
@@ -161,7 +161,7 @@ const ContactForm = () => {
                   <h4 className="mb-1 font-semibold text-neutral-900 dark:text-neutral-100">
                     Location
                   </h4>
-                  <p className="text-neutral-600 dark:text-neutral-400">
+                  <p className="text-neutral-600 dark:text-neutral-300">
                     {profile.location}
                   </p>
                 </div>
@@ -187,7 +187,7 @@ const ContactForm = () => {
                   <h4 className="mb-1 font-semibold text-neutral-900 dark:text-neutral-100">
                     Response Time
                   </h4>
-                  <p className="text-neutral-600 dark:text-neutral-400">
+                  <p className="text-neutral-600 dark:text-neutral-300">
                     Usually within 24 hours
                   </p>
                 </div>
@@ -195,7 +195,7 @@ const ContactForm = () => {
             </div>
 
             {/* Social links */}
-            <div className="mt-8 border-t border-neutral-200 pt-8 dark:border-neutral-700">
+            <div className="mt-8 border-t border-neutral-200 pt-8 dark:border-slate-700">
               <h4 className="mb-4 font-semibold text-neutral-900 dark:text-neutral-100">
                 Connect on Social Media
               </h4>
@@ -205,7 +205,7 @@ const ContactForm = () => {
                     href={profile.social.telegram}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex h-10 w-10 items-center justify-center rounded-lg bg-neutral-100 text-neutral-600 transition-colors duration-200 hover:bg-primary-100 hover:text-primary-600 dark:bg-neutral-800 dark:text-neutral-400 dark:hover:bg-primary-100/20 dark:hover:text-primary-100"
+                    className="flex h-10 w-10 items-center justify-center rounded-lg bg-neutral-100 text-neutral-600 transition-colors duration-200 hover:bg-primary-100 hover:text-primary-600 dark:bg-slate-800 dark:text-neutral-200 dark:hover:bg-primary-900/40 dark:hover:text-primary-200"
                     aria-label="Telegram"
                   >
                     <SocialIcon name="telegram" className="h-5 w-5" />
@@ -216,7 +216,7 @@ const ContactForm = () => {
                     href={profile.social.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex h-10 w-10 items-center justify-center rounded-lg bg-neutral-100 text-neutral-600 transition-colors duration-200 hover:bg-primary-100 hover:text-primary-600 dark:bg-neutral-800 dark:text-neutral-400 dark:hover:bg-primary-100/20 dark:hover:text-primary-100"
+                    className="flex h-10 w-10 items-center justify-center rounded-lg bg-neutral-100 text-neutral-600 transition-colors duration-200 hover:bg-primary-100 hover:text-primary-600 dark:bg-slate-800 dark:text-neutral-200 dark:hover:bg-primary-900/40 dark:hover:text-primary-200"
                     aria-label="LinkedIn"
                   >
                     <SocialIcon name="linkedin" className="h-5 w-5" />
@@ -228,7 +228,7 @@ const ContactForm = () => {
                     href={profile.social.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex h-10 w-10 items-center justify-center rounded-lg bg-neutral-100 text-neutral-600 transition-colors duration-200 hover:bg-primary-100 hover:text-primary-600 dark:bg-neutral-800 dark:text-neutral-400 dark:hover:bg-primary-100/20 dark:hover:text-primary-100"
+                    className="flex h-10 w-10 items-center justify-center rounded-lg bg-neutral-100 text-neutral-600 transition-colors duration-200 hover:bg-primary-100 hover:text-primary-600 dark:bg-slate-800 dark:text-neutral-200 dark:hover:bg-primary-900/40 dark:hover:text-primary-200"
                     aria-label="GitHub"
                   >
                     <SocialIcon name="github" className="h-5 w-5" />
@@ -242,7 +242,7 @@ const ContactForm = () => {
                     href={profile.social.youtube}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex h-10 w-10 items-center justify-center rounded-lg bg-neutral-100 text-neutral-600 transition-colors duration-200 hover:bg-primary-100 hover:text-primary-600 dark:bg-neutral-800 dark:text-neutral-400 dark:hover:bg-primary-100/20 dark:hover:text-primary-100"
+                    className="flex h-10 w-10 items-center justify-center rounded-lg bg-neutral-100 text-neutral-600 transition-colors duration-200 hover:bg-primary-100 hover:text-primary-600 dark:bg-slate-800 dark:text-neutral-200 dark:hover:bg-primary-900/40 dark:hover:text-primary-200"
                     aria-label="YouTube"
                   >
                     <SocialIcon name="youtube" className="h-5 w-5" />
@@ -254,7 +254,7 @@ const ContactForm = () => {
                     href={profile.social.instagram}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex h-10 w-10 items-center justify-center rounded-lg bg-neutral-100 text-neutral-600 transition-colors duration-200 hover:bg-primary-100 hover:text-primary-600 dark:bg-neutral-800 dark:text-neutral-400 dark:hover:bg-primary-100/20 dark:hover:text-primary-100"
+                    className="flex h-10 w-10 items-center justify-center rounded-lg bg-neutral-100 text-neutral-600 transition-colors duration-200 hover:bg-primary-100 hover:text-primary-600 dark:bg-slate-800 dark:text-neutral-200 dark:hover:bg-primary-900/40 dark:hover:text-primary-200"
                     aria-label="Instagram"
                   >
                     <SocialIcon name="instagram" className="h-5 w-5" />
