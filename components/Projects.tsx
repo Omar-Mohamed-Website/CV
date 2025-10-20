@@ -6,7 +6,6 @@ import React from 'react';
 
 import { profile } from '../data/profile';
 import SocialIcon from './SocialIcon';
-import SocialStats from './SocialStats';
 
 const Projects = () => {
   return (
@@ -61,25 +60,6 @@ const Projects = () => {
                 <p className="mb-4 flex-1 leading-relaxed text-neutral-700 dark:text-neutral-300">
                   {project.description}
                 </p>
-
-                {/* Real-time stats with auto-refresh */}
-                {project.demo &&
-                  /youtube\.com|youtu\.be/.test(project.demo) && (
-                    <div className="mb-4 rounded-lg bg-neutral-50 p-3 dark:bg-neutral-800">
-                      <SocialStats
-                        platform="youtube"
-                        channelId="UCOOt83vDj5b48W2oUIm1MQg"
-                      />
-                    </div>
-                  )}
-                {project.demo && /(^|\.)t\.me\//.test(project.demo) && (
-                  <div className="mb-4 rounded-lg bg-neutral-50 p-3 dark:bg-neutral-800">
-                    <SocialStats
-                      platform="telegram"
-                      channelId="english_with_omarr"
-                    />
-                  </div>
-                )}
 
                 {/* Technologies */}
                 <div className="mb-6 flex flex-wrap gap-2">

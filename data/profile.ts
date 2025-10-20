@@ -91,7 +91,7 @@ export const profile: Profile = {
       start: '2023-01',
       end: 'Present',
       description:
-        'Launched the YouTube channel @english_with_omarr in 2023 to teach English to beginners. Produced 140+ videos reaching ~21.2k views and 859 subscribers, simplifying English grammar and concepts with clear explanations and examples.',
+        'Launched the YouTube channel @english_with_omarr in 2023 to teach English to beginners. Created 140+ educational videos with clear explanations and examples to help students understand English grammar and concepts effectively.',
       technologies: ['YouTube', 'Video Editing', 'CapCut', 'Content Strategy'],
     },
     {
@@ -219,7 +219,7 @@ export const profile: Profile = {
     {
       name: 'YouTube Educational Channel - English with Omar',
       description:
-        'Created a comprehensive YouTube channel dedicated to providing educational English content for students. The channel has 859 subscribers, 140 videos, and approximately 21,200 views. As content creator and presenter, I prepare lessons, write scripts, record videos, and edit them to help students understand English clearly and study effectively. Launched in 2023, focusing on simplifying English for beginners.',
+        'Created a comprehensive YouTube channel dedicated to providing educational English content for students. As content creator and presenter, I prepare lessons, write scripts, record videos, and edit them to help students understand English clearly and study effectively. Launched in 2023, focusing on simplifying English for beginners.',
       technologies: [
         'YouTube',
         'Video Editing',
