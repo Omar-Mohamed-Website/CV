@@ -71,6 +71,9 @@ export interface Profile {
   };
 }
 
+// Base path for GitHub Pages deployment
+const basePath = process.env.NODE_ENV === 'production' ? '/Omar-Mohamed' : '';
+
 export const profile: Profile = {
   name: 'Omar Mohamed',
   title: 'High School Student | English Tutor & Content Creator',
@@ -79,7 +82,7 @@ export const profile: Profile = {
   phone: '+48 733 790 952',
   summary:
     'Motivated and adaptable high school student who thrives on learning quickly and applying knowledge effectively. I enjoy working in collaborative environments where I can contribute fresh ideas while taking ownership of my responsibilities. Detail-oriented and reliable, yet flexible enough to keep growing both personally and professionally to deliver the best results in whatever I take on. "I am a simple person" - passionate about teaching English to beginners and creating educational content.',
-  avatar: '/avatar.jpg',
+  avatar: `${basePath}/avatar.jpg`,
 
   experience: [
     {
