@@ -1,0 +1,17 @@
+# Placeholder Favicon
+# This is a text file representing where the favicon should be placed.
+# Replace this file with your actual favicon.ico
+#
+# Recommended specifications:
+# - Format: ICO
+# - Sizes: 16x16, 32x32, 48x48 pixels (multi-size ICO)
+# - Also consider creating:
+#   - apple-touch-icon.png (180x180)
+#   - android-chrome-192x192.png
+#   - android-chrome-512x512.png
+#   - favicon-16x16.png
+#   - favicon-32x32.png
+#
+# You can generate these from a single high-resolution logo using:
+# - https://realfavicongenerator.net/
+# - https://favicon.io/

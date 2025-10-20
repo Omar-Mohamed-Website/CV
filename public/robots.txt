@@ -1,0 +1,34 @@
+# Robots.txt for Personal CV Website
+# https://kamil-yalcinkaya.dev
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://kamil-yalcinkaya.dev/sitemap.xml
+
+# Allow all major search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+# Block unnecessary crawlers to save bandwidth
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+# Crawl delay for politeness
+Crawl-delay: 1

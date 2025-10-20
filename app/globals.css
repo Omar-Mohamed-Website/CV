@@ -1,0 +1,429 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* CSS Custom Properties for the colour palette */
+:root {
+  --color-primary-50: #c2edf2;
+  --color-primary-100: #7ab8bf;
+  --color-primary-200: #3e848c;
+  --color-primary-300: #025159;
+  --color-primary-400: #024148;
+  --color-primary-500: #025159;
+  --color-primary-600: #024148;
+  --color-primary-700: #01333a;
+  --color-primary-800: #01252a;
+  --color-primary-900: #01171b;
+
+  --color-accent-50: #f5e6d8;
+  --color-accent-100: #e5c4a6;
+  --color-accent-200: #d4a274;
+  --color-accent-300: #c48042;
+  --color-accent-400: #b36a20;
+  --color-accent-500: #a67458;
+  --color-accent-600: #8b5d47;
+  --color-accent-700: #704637;
+  --color-accent-800: #552f26;
+  --color-accent-900: #3a1815;
+
+  --font-inter: 'Inter', system-ui, sans-serif;
+
+  /* Performance optimizations */
+  --scroll-behavior: smooth;
+}
+
+/* Base styles */
+@layer base {
+  html {
+    scroll-behavior: var(--scroll-behavior);
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+    text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    font-family: var(--font-inter);
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-variant-ligatures: common-ligatures;
+  }
+
+  /* Focus styles for accessibility */
+  *:focus {
+    outline: 2px solid var(--color-primary-300);
+    outline-offset: 2px;
+  }
+
+  /* High contrast mode support */
+  @media (prefers-contrast: high) {
+    :root {
+      --color-primary-500: #000000;
+      --color-primary-600: #000000;
+    }
+  }
+
+  /* Respect user's motion preferences */
+  @media (prefers-reduced-motion: reduce) {
+    :root {
+      --scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* Component styles */
+@layer components {
+  .btn-primary {
+    @apply rounded-md border border-transparent bg-primary-500 font-medium text-white shadow-sm transition-colors duration-200 hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2 dark:focus:ring-offset-neutral-900;
+  }
+
+  .btn-secondary {
+    @apply rounded-md border border-white/30 bg-white/20 font-medium text-neutral-900 shadow-sm backdrop-blur-md transition-colors duration-200 hover:bg-white/30 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2 dark:border-white/10 dark:bg-white/10 dark:text-neutral-100 dark:hover:bg-white/15 dark:focus:ring-offset-neutral-900;
+  }
+
+  /* Button sizing and layout utilities */
+  .btn {
+    @apply inline-flex h-11 items-center justify-center gap-2 whitespace-nowrap px-5 text-sm;
+  }
+
+  .btn-lg {
+    @apply h-12 px-6 text-base;
+  }
+
+  .btn-sm {
+    @apply h-9 px-3 text-sm;
+  }
+
+  .section-heading {
+    @apply mb-4 text-3xl font-bold text-neutral-900 md:text-4xl dark:text-neutral-100;
+  }
+
+  .section-subheading {
+    @apply mx-auto mb-8 max-w-2xl text-lg text-neutral-600 dark:text-neutral-300;
+  }
+
+  .container-responsive {
+    @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .card {
+    @apply rounded-xl border border-white/20 bg-white/60 p-6 shadow-lg backdrop-blur-xl transition-shadow duration-200 hover:shadow-xl dark:border-white/10 dark:bg-neutral-900/40 dark:shadow-neutral-900/40;
+  }
+
+  .skill-bar {
+    @apply h-2 overflow-hidden rounded-full bg-neutral-200 dark:bg-neutral-700;
+  }
+
+  .skill-progress {
+    @apply h-full rounded-full bg-gradient-to-r from-primary-400 to-primary-600 transition-all duration-1000 ease-out;
+  }
+
+  /* Animation classes */
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.6s ease-out forwards;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.3s ease-out forwards;
+  }
+
+  /* Accessibility helper classes */
+  .sr-only {
+    @apply absolute -m-px h-px w-px overflow-hidden whitespace-nowrap border-0 p-0;
+  }
+
+  .not-sr-only {
+    @apply static m-0 h-auto w-auto overflow-visible whitespace-normal p-0;
+  }
+}
+
+/* Glass utilities and liquid background */
+@layer utilities {
+  .glass {
+    @apply rounded-xl border border-white/20 bg-white/50 backdrop-blur-xl dark:border-white/10 dark:bg-neutral-900/40;
+  }
+  .glass-strong {
+    @apply rounded-2xl border border-white/30 bg-white/40 shadow-xl backdrop-blur-2xl dark:border-white/10 dark:bg-neutral-900/50;
+  }
+  .bg-liquid {
+    background-image:
+      radial-gradient(
+        1200px 600px at -10% -10%,
+        rgba(2, 81, 89, 0.08),
+        transparent 60%
+      ),
+      radial-gradient(
+        800px 400px at 110% 10%,
+        rgba(122, 184, 191, 0.12),
+        transparent 60%
+      ),
+      radial-gradient(
+        1000px 600px at 50% 120%,
+        rgba(174, 250, 255, 0.07),
+        transparent 60%
+      );
+  }
+}
+
+/* Print styles for CV layout */
+@media print {
+  @page {
+    size: A4;
+    margin: 0.5in;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  body {
+    font-size: 11pt;
+    line-height: 1.3;
+    color: black;
+    background: white;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  /* Hide navigation and non-essential elements */
+  header,
+  nav,
+  .contact-form,
+  footer,
+  button:not(.print-visible),
+  .mobile-menu,
+  .scroll-indicator {
+    display: none !important;
+  }
+
+  /* Adjust section spacing for print */
+  section {
+    page-break-inside: avoid;
+    margin-bottom: 0.5rem !important;
+    padding: 0.25rem 0 !important;
+  }
+
+  /* Hero section adjustments */
+  #hero {
+    min-height: auto !important;
+    padding: 0.5rem 0 !important;
+    text-align: center;
+    page-break-after: avoid;
+  }
+
+  /* Skills layout for print */
+  .skills-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.25rem !important;
+    page-break-inside: avoid;
+  }
+
+  /* Experience and education layout */
+  .timeline-item {
+    page-break-inside: avoid;
+    margin-bottom: 0.5rem !important;
+    border-left: 2px solid #025159 !important;
+    padding-left: 0.5rem !important;
+  }
+
+  /* Ensure text is readable */
+  h1 {
+    font-size: 16pt !important;
+    margin-bottom: 0.25rem !important;
+  }
+  h2 {
+    font-size: 14pt !important;
+    margin-bottom: 0.25rem !important;
+    border-bottom: 1px solid #025159;
+    padding-bottom: 0.1rem;
+  }
+  h3 {
+    font-size: 12pt !important;
+    margin-bottom: 0.2rem !important;
+  }
+  h4 {
+    font-size: 11pt !important;
+    margin-bottom: 0.1rem !important;
+  }
+
+  p {
+    margin-bottom: 0.25rem !important;
+  }
+
+  /* Remove shadows and borders */
+  .card,
+  .shadow-lg,
+  .shadow-md {
+    box-shadow: none !important;
+    border: 1px solid #e5e7eb !important;
+    margin-bottom: 0.25rem !important;
+    padding: 0.25rem !important;
+  }
+
+  /* Links styling */
+  a {
+    color: black !important;
+    text-decoration: none !important;
+  }
+
+  a[href^='http']::after {
+    content: ' (' attr(href) ')';
+    font-size: 9pt;
+    color: #666;
+  }
+
+  /* Contact info visibility */
+  .contact-info {
+    display: block !important;
+  }
+
+  /* Projects grid adjustment */
+  .projects-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 0.25rem !important;
+  }
+
+  /* Hide interactive elements */
+  .hover\:scale-105,
+  .transition-transform,
+  .animate-pulse {
+    transform: none !important;
+    animation: none !important;
+  }
+
+  /* Timeline adjustments */
+  .timeline-item::before {
+    display: none !important;
+  }
+
+  /* Skills progress bars */
+  .skill-progress {
+    background: linear-gradient(
+      to right,
+      #025159 var(--progress),
+      #e5e7eb var(--progress)
+    ) !important;
+  }
+
+  /* Certificate and project images */
+  img {
+    max-width: 2cm !important;
+    height: auto !important;
+  }
+
+  /* Optimize spacing */
+  .container-responsive {
+    padding: 0 !important;
+  }
+
+  /* Page breaks */
+  .page-break-before {
+    page-break-before: always;
+  }
+
+  .page-break-after {
+    page-break-after: always;
+  }
+
+  .page-break-inside-avoid {
+    page-break-inside: avoid;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .btn-primary {
+    border: 2px solid currentColor;
+  }
+
+  .card {
+    border: 2px solid currentColor;
+  }
+}
+
+/* Utility animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Loading animation for skill bars */
+@keyframes fillSkillBar {
+  from {
+    width: 0;
+  }
+}
+
+/* Pulse animation for contact form submission */
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Performance optimizations */
+.will-change-transform {
+  will-change: transform;
+}
+
+.will-change-opacity {
+  will-change: opacity;
+}
+
+/* Loading states */
+.loading {
+  @apply animate-pulse;
+}
+
+/* Focus trap for modals/menus */
+.focus-trap {
+  @apply focus:outline-none focus:ring-2 focus:ring-primary-300;
+}

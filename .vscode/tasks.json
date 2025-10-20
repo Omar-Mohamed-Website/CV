@@ -1,0 +1,11 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Open localhost in browser",
+			"type": "shell",
+			"command": "open http://localhost:3001/",
+			"group": "build"
+		}
+	]
+}
