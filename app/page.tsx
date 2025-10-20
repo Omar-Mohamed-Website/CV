@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 
 import About from '../components/About';
@@ -10,8 +12,12 @@ import Header from '../components/Header';
 import Hero from '../components/Hero';
 import Projects from '../components/Projects';
 import Skills from '../components/Skills';
+import { usePullToTop } from '../hooks/useTouchGestures';
 
 export default function HomePage() {
+  // Enable pull-to-top gesture for mobile
+  usePullToTop();
+
   return (
     <>
       <Header />

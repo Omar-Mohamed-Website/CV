@@ -158,6 +158,7 @@ const MobileMenu = ({
   onItemClick: (id: string) => void;
 }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [dragX, setDragX] = useState(0);
   const canPortal =
     typeof window !== 'undefined' && typeof document !== 'undefined';
 
@@ -181,6 +182,41 @@ const MobileMenu = ({
     return () => {};
   }, [isOpen]);
 
+  // Edge swipe to open menu (swipe from right edge when closed)
+  useEffect(() => {
+    if (isOpen || !canPortal) return;
+
+    let startX = 0;
+
+    const handleTouchStart = (e: TouchEvent) => {
+      const touch = e.touches[0];
+      startX = touch.clientX;
+      // Only trigger if starting near right edge (within 20px)
+      if (window.innerWidth - startX > 20) {
+        startX = 0;
+      }
+    };
+
+    const handleTouchMove = (e: TouchEvent) => {
+      if (!startX) return;
+      const touch = e.touches[0];
+      const deltaX = startX - touch.clientX;
+
+      // If swiping left from edge significantly (>50px), open menu
+      if (deltaX > 50) {
+        setIsOpen(true);
+        startX = 0;
+      }
+    };
+
+    window.addEventListener('touchstart', handleTouchStart, { passive: true });
+    window.addEventListener('touchmove', handleTouchMove, { passive: true });
+
+    return () => {
+      window.removeEventListener('touchstart', handleTouchStart);
+      window.removeEventListener('touchmove', handleTouchMove);
+    };
+  }, [isOpen, canPortal]);
   return (
     <>
       <button
@@ -223,11 +259,27 @@ const MobileMenu = ({
 
             {/* Panel */}
             <motion.div
+              drag="x"
+              dragConstraints={{ left: 0, right: 300 }}
+              dragElastic={0.2}
+              onDragEnd={(e, info) => {
+                // Close menu if dragged right more than 100px or velocity > 500
+                if (info.offset.x > 100 || info.velocity.x > 500) {
+                  setIsOpen(false);
+                  setDragX(0);
+                } else {
+                  setDragX(0);
+                }
+              }}
+              onDrag={(e, info) => {
+                setDragX(info.offset.x);
+              }}
               initial={{ x: '100%' }}
-              animate={{ x: 0 }}
+              animate={{ x: dragX > 0 ? dragX : 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-              className="glass-strong fixed right-0 top-0 z-[100] h-dvh w-72 overflow-y-auto overscroll-contain pb-[env(safe-area-inset-bottom)] pt-[env(safe-area-inset-top)] md:hidden"
+              className="glass-strong fixed right-0 top-0 z-[100] h-dvh w-72 touch-pan-y overflow-y-auto overscroll-contain pb-[env(safe-area-inset-bottom)] pt-[env(safe-area-inset-top)] md:hidden"
+              style={{ cursor: dragX > 0 ? 'grabbing' : 'grab' }}
             >
               <div className="flex h-full flex-col p-6">
                 <div className="mb-6 flex items-center justify-between border-b border-neutral-200 pb-4 dark:border-slate-800">
