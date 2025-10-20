@@ -280,9 +280,9 @@ const ContactForm = () => {
                   aria-hidden="true"
                 />
                 <div className="pointer-events-none absolute left-1/2 top-1/2 z-30 -translate-x-1/2 -translate-y-1/2">
-                  <div className="mx-auto w-max rounded-lg border border-yellow-300 bg-yellow-50/95 px-4 py-3 text-yellow-900 shadow-xl dark:border-yellow-700 dark:bg-yellow-900/90 dark:text-yellow-100">
+                  <div className="strobe-warning mx-auto w-max rounded-lg border border-yellow-300 bg-yellow-50/95 px-4 py-3 text-yellow-900 shadow-xl dark:border-yellow-700 dark:bg-yellow-900/90 dark:text-yellow-100">
                     <div className="flex flex-col items-center text-center">
-                      <div className="relative mb-2 h-8 w-8">
+                      <div className="strobe-icon-red relative mb-2 h-8 w-8">
                         <Image
                           src={`${process.env.NODE_ENV === 'production' ? '/CV' : ''}/warning-icon.svg`}
                           alt="Warning"

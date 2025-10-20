@@ -211,7 +211,7 @@ const Footer = () => {
               For permissions or copyright concerns, please contact:{' '}
               <a
                 href={`mailto:${profile.email}`}
-                className="text-primary-300 underline decoration-primary-700/40 underline-offset-2 transition-colors duration-200 hover:text-primary-200 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2 focus:ring-offset-neutral-900"
+                className="text-primary-200 underline decoration-primary-400/50 underline-offset-2 transition-colors duration-200 hover:text-primary-100 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2 focus:ring-offset-neutral-900"
               >
                 {profile.email}
               </a>

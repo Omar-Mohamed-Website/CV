@@ -13,6 +13,13 @@
       "command": "npm run build && npm run test",
       "problemMatcher": ["$tsc", "$eslint - stylish"],
       "group": "build"
+    },
+    {
+      "label": "Build and test",
+      "type": "shell",
+      "command": "npm run build && npm run test",
+      "problemMatcher": ["$tsc", "$eslint - stylish"],
+      "group": "build"
     }
   ]
 }

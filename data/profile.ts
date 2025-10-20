@@ -86,6 +86,15 @@ export const profile: Profile = {
 
   experience: [
     {
+      company: 'bright Stars Academy',
+      role: 'English Teacher Assistant',
+      start: '2024',
+      end: '2025',
+      description:
+        'Assisted in delivering engaging English lessons for children aged 4–10; supported classroom activities with games, songs, storytelling; helped manage classroom behavior; collaborated with senior teachers to adapt materials; encouraged student confidence through routines and group activities.',
+      technologies: ['Teaching', 'Classroom Management', 'Lesson Planning'],
+    },
+    {
       company: 'YouTube - English with Omar',
       role: 'English Tutor & Content Creator',
       start: '2023-01',
@@ -125,6 +134,14 @@ export const profile: Profile = {
   ],
 
   education: [
+    {
+      school: 'Worls TESOL Academy',
+      degree: '120-Hour TESOL / TEFL Certificate',
+      start: '2025',
+      end: '2025',
+      description:
+        'Completed TESOL/TEFL training in London, UK focused on pedagogy, classroom management, and practical teaching methodologies.',
+    },
     {
       school: 'Martyr Colonel Ahmed Jaber Nassar Secondary School for Boys A',
       degree: 'High School Diploma in General Secondary Education',
@@ -188,6 +205,11 @@ export const profile: Profile = {
   ],
 
   certifications: [
+    {
+      name: '120-Hour TESOL / TEFL Certificate',
+      issuer: 'Worls TESOL Academy',
+      date: '2025',
+    },
     {
       name: '3rd Place - III Chess Tournament LKS "START" Wola Mielecka',
       issuer: 'LKS "START" Wola Mielecka',
