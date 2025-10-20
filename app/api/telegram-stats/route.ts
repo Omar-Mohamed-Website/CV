@@ -69,7 +69,7 @@ export async function POST(request: NextRequest) {
       channel,
       subscribers,
     });
-  } catch (error) {
+  } catch {
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }
