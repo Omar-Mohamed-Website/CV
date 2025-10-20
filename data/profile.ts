@@ -243,7 +243,7 @@ export const profile: Profile = {
     },
     {
       name: 'IELTS Academic',
-      issuer: 'British Council / IDP: IELTS Australia',
+      issuer: 'British Council / IDP: IELTS UK',
       date: '2025-10-20',
     },
   ],
