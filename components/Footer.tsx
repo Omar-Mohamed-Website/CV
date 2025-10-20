@@ -168,7 +168,7 @@ const Footer = () => {
             {/* Email for direct contact */}
             <a
               href={`mailto:${profile.email}`}
-              className="-mx-2 inline-flex items-center rounded-md px-2 py-1 text-sm text-primary-300 underline decoration-primary-700/40 underline-offset-2 transition-colors duration-200 hover:text-primary-200 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2 focus:ring-offset-neutral-900"
+              className="-mx-2 inline-flex items-center rounded-md px-2 py-1 text-sm text-primary-800 transition-colors duration-200 hover:text-primary-900 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2 focus:ring-offset-neutral-900 dark:text-primary-200 dark:hover:text-primary-100"
             >
               <svg
                 className="mr-2 h-4 w-4"
@@ -211,7 +211,7 @@ const Footer = () => {
               For permissions or copyright concerns, please contact:{' '}
               <a
                 href={`mailto:${profile.email}`}
-                className="text-primary-200 underline decoration-primary-400/50 underline-offset-2 transition-colors duration-200 hover:text-primary-100 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2 focus:ring-offset-neutral-900"
+                className="text-primary-200 transition-colors duration-200 hover:text-primary-100 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2 focus:ring-offset-neutral-900"
               >
                 {profile.email}
               </a>

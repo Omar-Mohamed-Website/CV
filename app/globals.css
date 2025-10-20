@@ -116,7 +116,7 @@
   }
 
   .card {
-    @apply rounded-xl border border-neutral-200 bg-white/75 p-5 shadow-xl backdrop-blur-2xl transition-all duration-200 hover:shadow-2xl dark:border-white/10 dark:bg-neutral-900/70 dark:shadow-neutral-900/40 sm:p-6;
+    @apply rounded-xl border border-neutral-200 bg-white/75 p-5 shadow-xl backdrop-blur-2xl transition-all duration-200 hover:shadow-2xl dark:border-white/10 dark:bg-neutral-900/80 dark:shadow-neutral-900/40 sm:p-6;
     background-image: linear-gradient(
       to bottom right,
       rgba(255, 255, 255, 0.6),
@@ -158,7 +158,7 @@
 /* Glass utilities and liquid background */
 @layer utilities {
   .glass {
-    @apply rounded-xl border border-neutral-200 bg-white/65 backdrop-blur-2xl dark:border-white/10 dark:bg-neutral-900/60;
+    @apply rounded-xl border border-neutral-200 bg-white/65 backdrop-blur-2xl dark:border-white/10 dark:bg-neutral-900/80;
     background-image: linear-gradient(
       to bottom right,
       rgba(255, 255, 255, 0.5),
@@ -166,19 +166,19 @@
     );
   }
   .glass-strong {
-    @apply rounded-2xl border border-neutral-200 bg-white/50 shadow-xl backdrop-blur-2xl dark:border-white/10 dark:bg-neutral-900/70;
+    @apply rounded-2xl border border-neutral-200 bg-white/50 shadow-xl backdrop-blur-2xl dark:border-white/10 dark:bg-neutral-900/80;
   }
   /* Strobe animation for contact warning */
   @keyframes strobeBox {
     0%,
     100% {
-      box-shadow: 0 0 0 rgba(239, 68, 68, 0);
+      box-shadow: 0 0 0 rgba(249, 115, 22, 0); /* orange-500 */
       filter: brightness(1);
     }
     50% {
       box-shadow:
-        0 0 24px rgba(239, 68, 68, 0.45),
-        0 0 48px rgba(239, 68, 68, 0.25);
+        0 0 24px rgba(249, 115, 22, 0.45),
+        0 0 48px rgba(249, 115, 22, 0.25);
       filter: brightness(1.05);
     }
   }
@@ -199,7 +199,10 @@
     }
   }
   .strobe-icon-red {
-    animation: strobeIconRed 0.9s ease-in-out infinite;
+    animation: strobeIconRed 1.2s ease-in-out infinite;
+  }
+  .strobe-delay-half {
+    animation-delay: 0.6s;
   }
   .bg-liquid {
     background-image:
