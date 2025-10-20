@@ -4,6 +4,7 @@ import react from '@vitejs/plugin-react';
 import path from 'path';
 
 export default defineConfig({
+  // @ts-expect-error - Vite version mismatch between vitest bundled version and standalone plugin
   plugins: [react()],
   resolve: {
     alias: {
