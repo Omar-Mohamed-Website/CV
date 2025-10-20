@@ -37,60 +37,79 @@ const FALLBACK_STATS = {
   } as TelegramStats,
 };
 
-// YouTube Data API v3
+// Fetch YouTube stats using RSS feed (completely free, no API key needed)
 const fetchYouTubeStats = async (
   channelId: string
 ): Promise<YouTubeStats | null> => {
   try {
-    const apiKey = process.env.NEXT_PUBLIC_YOUTUBE_API_KEY;
-
-    // If no API key, use fallback stats
-    if (!apiKey) {
-      // eslint-disable-next-line no-console
-      console.warn('YouTube API key not configured. Using fallback stats.');
-      return null;
-    }
-
+    // YouTube RSS feeds are public and don't require authentication
     const response = await fetch(
-      `https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${channelId}&key=${apiKey}`,
-      { next: { revalidate: 300 } } // Cache for 5 minutes
+      `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`,
+      {
+        next: { revalidate: 300 }, // Cache for 5 minutes
+        cache: 'no-store',
+      }
     );
 
     if (!response.ok) {
-      // eslint-disable-next-line no-console
-      console.error('YouTube API error:', response.status, response.statusText);
       return null;
     }
 
-    const data = await response.json();
+    const xmlText = await response.text();
 
-    if (data.error) {
-      // eslint-disable-next-line no-console
-      console.error('YouTube API error:', data.error.message);
-      return null;
+    // Parse video count from RSS feed
+    const videoMatches = xmlText.match(/<entry>/g);
+    const videos = videoMatches ? videoMatches.length : 0;
+
+    // Try to get subscriber count from channel page (public data)
+    // Note: This might be blocked by CORS, so we use fallback
+    try {
+      const channelResponse = await fetch(
+        `https://www.youtube.com/channel/${channelId}/about`,
+        { next: { revalidate: 300 } }
+      );
+
+      if (channelResponse.ok) {
+        const html = await channelResponse.text();
+        const subMatch = html.match(
+          /"subscriberCountText":\{"simpleText":"([\d.KM]+) subscribers"\}/
+        );
+        const viewMatch = html.match(
+          /"viewCountText":\{"simpleText":"([\d,]+) views"\}/
+        );
+
+        if (subMatch || viewMatch) {
+          const parseCount = (str: string): number => {
+            if (!str) return 0;
+            str = str.replace(/,/g, '');
+            if (str.includes('K')) return Math.round(parseFloat(str) * 1000);
+            if (str.includes('M')) return Math.round(parseFloat(str) * 1000000);
+            return parseInt(str) || 0;
+          };
+
+          return {
+            subscribers: subMatch ? parseCount(subMatch[1]) : 0,
+            videos,
+            views: viewMatch ? parseCount(viewMatch[1]) : 0,
+          };
+        }
+      }
+    } catch {
+      // CORS blocked, fall back to RSS data only
     }
 
-    if (!data.items?.[0]) {
-      // eslint-disable-next-line no-console
-      console.error('YouTube channel not found');
-      return null;
-    }
-
-    const stats = data.items[0].statistics;
-
+    // Return at least video count from RSS
     return {
-      subscribers: parseInt(stats.subscriberCount || '0'),
-      views: parseInt(stats.viewCount || '0'),
-      videos: parseInt(stats.videoCount || '0'),
+      subscribers: 0,
+      videos,
+      views: 0,
     };
   } catch (error) {
     // eslint-disable-next-line no-console
-    console.error('Failed to fetch YouTube stats:', error);
+    console.warn('Failed to fetch YouTube stats, using fallback:', error);
     return null;
   }
-};
-
-// Fetch Telegram stats from public channel info
+}; // Fetch Telegram stats from public channel info
 const fetchTelegramStats = async (
   username: string
 ): Promise<TelegramStats | null> => {
