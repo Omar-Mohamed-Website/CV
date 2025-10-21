@@ -128,7 +128,6 @@ export function usePullToTop() {
 
       isDragging = false;
 
-
       setTimeout(() => {
         document.body.style.transition = '';
       }, 400);

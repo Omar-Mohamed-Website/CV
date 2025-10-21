@@ -12,7 +12,10 @@ export default function PerformanceOptimizer() {
 
     const applyReducedMotion = (e: MediaQueryList | MediaQueryListEvent) => {
       if (e.matches) {
-        document.documentElement.style.setProperty('--animation-duration', '0.01ms');
+        document.documentElement.style.setProperty(
+          '--animation-duration',
+          '0.01ms'
+        );
       } else {
         document.documentElement.style.removeProperty('--animation-duration');
       }

@@ -11,9 +11,12 @@ import { usePullToTop } from '../hooks/useTouchGestures';
 const About = dynamic(() => import('../components/About'), {
   loading: () => <div className="py-20 text-center">Loading...</div>,
 });
-const ExperienceTimeline = dynamic(() => import('../components/ExperienceTimeline'), {
-  loading: () => <div className="py-20 text-center">Loading...</div>,
-});
+const ExperienceTimeline = dynamic(
+  () => import('../components/ExperienceTimeline'),
+  {
+    loading: () => <div className="py-20 text-center">Loading...</div>,
+  }
+);
 const Education = dynamic(() => import('../components/Education'), {
   loading: () => <div className="py-20 text-center">Loading...</div>,
 });

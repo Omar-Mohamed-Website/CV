@@ -183,7 +183,8 @@ const MobileMenu = ({
       const originalOverflow = document.body.style.overflow;
       const originalPaddingRight = document.body.style.paddingRight;
 
-      const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+      const scrollbarWidth =
+        window.innerWidth - document.documentElement.clientWidth;
       document.body.style.overflow = 'hidden';
       document.body.style.paddingRight = `${scrollbarWidth}px`;
 
@@ -220,7 +221,8 @@ const MobileMenu = ({
         </svg>
       </button>
 
-      {mounted && isOpen &&
+      {mounted &&
+        isOpen &&
         createPortal(
           <div className="md:hidden">
             <motion.div
