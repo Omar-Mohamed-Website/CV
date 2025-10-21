@@ -77,7 +77,7 @@ const basePath = process.env.NODE_ENV === 'production' ? '/CV' : '';
 export const profile: Profile = {
   name: 'Omar Mohamed',
   title: 'High School Student | English Tutor & Content Creator',
-  location: 'Mielec, Podkarpackie, Poland',
+  location: 'Warszawa, Poland',
   email: 'omarrmohamedd05@gmail.com',
   phone: '+48 733 790 952',
   summary:
@@ -306,7 +306,7 @@ export const profile: Profile = {
     title:
       'Omar Mohamed - High School Student | English Tutor & Content Creator',
     description:
-      'High school student, English tutor, and content creator from Egypt, now in Mielec, Poland. Teaching English to beginners through YouTube (859 subscribers, 21.2k views) and Telegram (897 subscribers). Specializing in simplifying complex English concepts for secondary students.',
+      'High school student, English tutor, and content creator from Egypt, now in Warszawa, Poland. Teaching English to beginners through YouTube (859 subscribers, 21.2k views) and Telegram (897 subscribers). Specializing in simplifying complex English concepts for secondary students.',
     keywords: [
       'omar mohamed',
       'english tutor',
@@ -317,7 +317,7 @@ export const profile: Profile = {
       'educational content',
       'youtube educator',
       'telegram teacher',
-      'mielec',
+      'warszawa',
       'poland',
       'egypt',
       'teaching english',
