@@ -1,18 +1,36 @@
 'use client';
 
+import dynamic from 'next/dynamic';
 import React from 'react';
 
-import About from '../components/About';
-import Certifications from '../components/Certifications';
-import ContactForm from '../components/ContactForm';
-import Education from '../components/Education';
-import ExperienceTimeline from '../components/ExperienceTimeline';
-import Footer from '../components/Footer';
 import Header from '../components/Header';
 import Hero from '../components/Hero';
-import Projects from '../components/Projects';
-import Skills from '../components/Skills';
+import PerformanceOptimizer from '../components/PerformanceOptimizer';
 import { usePullToTop } from '../hooks/useTouchGestures';
+
+// Lazy load components that are below the fold
+const About = dynamic(() => import('../components/About'), {
+  loading: () => <div className="py-20 text-center">Loading...</div>,
+});
+const ExperienceTimeline = dynamic(() => import('../components/ExperienceTimeline'), {
+  loading: () => <div className="py-20 text-center">Loading...</div>,
+});
+const Education = dynamic(() => import('../components/Education'), {
+  loading: () => <div className="py-20 text-center">Loading...</div>,
+});
+const Skills = dynamic(() => import('../components/Skills'), {
+  loading: () => <div className="py-20 text-center">Loading...</div>,
+});
+const Certifications = dynamic(() => import('../components/Certifications'), {
+  loading: () => <div className="py-20 text-center">Loading...</div>,
+});
+const Projects = dynamic(() => import('../components/Projects'), {
+  loading: () => <div className="py-20 text-center">Loading...</div>,
+});
+const ContactForm = dynamic(() => import('../components/ContactForm'), {
+  loading: () => <div className="py-20 text-center">Loading...</div>,
+});
+const Footer = dynamic(() => import('../components/Footer'));
 
 export default function HomePage() {
   // Enable pull-to-top gesture for mobile
@@ -20,6 +38,7 @@ export default function HomePage() {
 
   return (
     <>
+      <PerformanceOptimizer />
       <Header />
 
       <main id="main-content" className="relative">

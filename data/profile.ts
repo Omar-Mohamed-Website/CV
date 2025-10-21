@@ -47,6 +47,7 @@ export interface Social {
   youtube?: string;
   telegram?: string;
   instagram?: string;
+  tiktok?: string;
 }
 
 export interface Profile {
@@ -124,12 +125,12 @@ export const profile: Profile = {
       ],
     },
     {
-      company: 'TikTok - Freelance English Content',
+      company: 'TikTok - English with Omar',
       role: 'Short-form Content Creator',
-      start: '2023-03',
+      start: '2025-08-05',
       end: 'Present',
       description:
-        'Create short-form educational content on TikTok to simplify English for beginners and promote longer-form lessons. Work with trends to increase engagement. (Link to be added when available).',
+        'Create short-form educational content on TikTok to simplify English for beginners and promote longer-form lessons. Work with trends to increase engagement.',
       technologies: [
         'TikTok',
         'Scripting',
@@ -276,6 +277,20 @@ export const profile: Profile = {
       demo: 'https://t.me/english_with_omarr',
       image: `${basePath}/projects/telegram-community.svg`,
     },
+    {
+      name: 'TikTok Educational Content - English with Omar',
+      description:
+        'Create engaging short-form educational videos on TikTok to simplify English for beginners. Use trending formats and creative storytelling to make English learning accessible and fun while promoting longer-form lessons on YouTube. Focus on quick tips, grammar explanations, and vocabulary building through viral content strategies.',
+      technologies: [
+        'TikTok',
+        'Video Editing',
+        'Content Creation',
+        'Scriptwriting',
+        'CapCut',
+      ],
+      demo: 'https://www.tiktok.com/@englishwithomar3',
+      image: `${basePath}/projects/tiktok-content.svg`,
+    },
   ],
 
   social: {
@@ -283,6 +298,7 @@ export const profile: Profile = {
     github: 'https://github.com/omarmohamed05',
     youtube: 'https://www.youtube.com/@english_with_omarr',
     telegram: 'https://t.me/english_with_omarr',
+    tiktok: 'https://www.tiktok.com/@englishwithomar3',
     website: 'https://omar-mohamed.dev',
     email: 'omarrmohamedd05@gmail.com',
   },

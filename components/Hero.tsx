@@ -32,48 +32,43 @@ const Hero = () => {
   return (
     <div className="container-responsive">
       <div className="flex flex-col items-center justify-between gap-12 py-12 lg:flex-row">
-        {/* Text Content */}
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          transition={{ duration: 0.6, delay: 0.1, ease: 'easeOut' }}
           className="flex-1 text-center lg:text-left"
         >
-          {/* Greeting */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
+            transition={{ duration: 0.5, delay: 0.2, ease: 'easeOut' }}
             className="mb-4 text-lg font-medium text-primary-600 dark:text-primary-100"
           >
             Hello, I&apos;m
           </motion.p>
 
-          {/* Name */}
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
+            transition={{ duration: 0.6, delay: 0.3, ease: 'easeOut' }}
             className="mb-6 text-4xl font-bold leading-tight text-neutral-900 dark:text-neutral-100 md:text-5xl lg:text-6xl"
           >
             {profile.name}
           </motion.h1>
 
-          {/* Title */}
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.8 }}
+            transition={{ duration: 0.5, delay: 0.4, ease: 'easeOut' }}
             className="mb-6 text-xl font-semibold text-primary-700 dark:text-primary-100 md:text-2xl"
           >
             {profile.title}
           </motion.h2>
 
-          {/* Location */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 1.0 }}
+            transition={{ duration: 0.5, delay: 0.5, ease: 'easeOut' }}
             className="mb-8 flex items-center justify-center text-neutral-700 dark:text-neutral-200 lg:justify-start"
           >
             <svg
@@ -90,21 +85,19 @@ const Hero = () => {
             {profile.location}
           </motion.div>
 
-          {/* Summary */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 1.2 }}
+            transition={{ duration: 0.5, delay: 0.6, ease: 'easeOut' }}
             className="mb-8 max-w-2xl text-lg leading-relaxed text-neutral-700 dark:text-neutral-200"
           >
             {profile.summary}
           </motion.p>
 
-          {/* CTA Buttons */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 1.4 }}
+            transition={{ duration: 0.5, delay: 0.7, ease: 'easeOut' }}
             className="flex flex-col justify-center gap-4 sm:flex-row lg:justify-start"
           >
             <ResumeDownload variant="hero" />
@@ -136,11 +129,10 @@ const Hero = () => {
             </motion.a>
           </motion.div>
 
-          {/* Social Links */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 1.6 }}
+            transition={{ duration: 0.5, delay: 0.8, ease: 'easeOut' }}
             className="mt-8 flex items-center justify-center space-x-6 lg:justify-start"
           >
             {profile.social.telegram && (
@@ -154,6 +146,32 @@ const Hero = () => {
                 aria-label="Telegram channel"
               >
                 <SocialIcon name="telegram" className="h-6 w-6" />
+              </motion.a>
+            )}
+            {profile.social.youtube && (
+              <motion.a
+                href={profile.social.youtube}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-md p-1 text-neutral-600 transition-colors duration-200 hover:text-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2 dark:text-neutral-200 dark:hover:text-primary-200"
+                whileHover={{ scale: 1.1, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                aria-label="YouTube channel"
+              >
+                <SocialIcon name="youtube" className="h-6 w-6" />
+              </motion.a>
+            )}
+            {profile.social.tiktok && (
+              <motion.a
+                href={profile.social.tiktok}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-md p-1 text-neutral-600 transition-colors duration-200 hover:text-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2 dark:text-neutral-200 dark:hover:text-primary-200"
+                whileHover={{ scale: 1.1, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                aria-label="TikTok profile"
+              >
+                <SocialIcon name="tiktok" className="h-6 w-6" />
               </motion.a>
             )}
             {profile.social.linkedin && (
@@ -184,8 +202,6 @@ const Hero = () => {
               </motion.a>
             )}
 
-            {/* Twitter removed by request */}
-
             {profile.social.email && (
               <motion.a
                 href={`mailto:${profile.social.email}`}
@@ -200,15 +216,15 @@ const Hero = () => {
           </motion.div>
         </motion.div>
 
-        {/* Profile Image */}
         <motion.div
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
+          transition={{ duration: 0.6, delay: 0.2, ease: 'easeOut' }}
           className="flex-shrink-0"
         >
           <motion.div
-            whileHover={{ scale: 1.05 }}
+            whileHover={{ scale: 1.02 }}
+            transition={{ duration: 0.2 }}
             className="relative h-80 w-80 md:h-96 md:w-96"
           >
             <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary-400 to-primary-600 opacity-20 blur-xl"></div>
@@ -220,6 +236,7 @@ const Hero = () => {
                 className="object-cover"
                 sizes="(max-width: 768px) 320px, 384px"
                 priority
+                quality={85}
                 onError={() => setImgSrc(fallbackSvg)}
               />
             </div>
@@ -227,16 +244,15 @@ const Hero = () => {
         </motion.div>
       </div>
 
-      {/* Scroll indicator */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 2.0 }}
+        transition={{ duration: 0.5, delay: 1.0, ease: 'easeOut' }}
         className="mt-16 flex justify-center"
       >
         <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
           className="cursor-pointer text-neutral-400 transition-colors duration-200 hover:text-primary-600 dark:text-neutral-300 dark:hover:text-primary-200"
           onClick={() =>
             document

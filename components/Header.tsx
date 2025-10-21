@@ -14,34 +14,44 @@ const Header = () => {
   const [activeSection, setActiveSection] = useState('hero');
 
   useEffect(() => {
+    let ticking = false;
+
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setIsScrolled(window.scrollY > 50);
 
-      const sections = [
-        'hero',
-        'about',
-        'experience',
-        'education',
-        'skills',
-        'certifications',
-        'projects',
-        'contact',
-      ];
-      const currentSection = sections.find((section) => {
-        const element = document.getElementById(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          return rect.top <= 100 && rect.bottom >= 100;
-        }
-        return false;
-      });
+          const sections = [
+            'hero',
+            'about',
+            'experience',
+            'education',
+            'skills',
+            'certifications',
+            'projects',
+            'contact',
+          ];
+          const currentSection = sections.find((section) => {
+            const element = document.getElementById(section);
+            if (element) {
+              const rect = element.getBoundingClientRect();
+              return rect.top <= 100 && rect.bottom >= 100;
+            }
+            return false;
+          });
 
-      if (currentSection) {
-        setActiveSection(currentSection);
+          if (currentSection) {
+            setActiveSection(currentSection);
+          }
+
+          ticking = false;
+        });
+
+        ticking = true;
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -85,7 +95,6 @@ const Header = () => {
         aria-label="Main navigation"
       >
         <div className="flex items-center justify-between">
-          {/* Logo/Name */}
           <motion.div
             whileHover={{ scale: 1.01 }}
             transition={{ duration: 0.2 }}
@@ -100,7 +109,6 @@ const Header = () => {
             </button>
           </motion.div>
 
-          {/* Desktop Navigation */}
           <div className="hidden items-center gap-1 md:flex">
             {navigationItems.map((item) => (
               <motion.button
@@ -134,7 +142,6 @@ const Header = () => {
             </div>
           </div>
 
-          {/* Mobile Menu Button */}
           <div className="md:hidden">
             <MobileMenu
               navigationItems={navigationItems}
@@ -158,9 +165,11 @@ const MobileMenu = ({
   onItemClick: (id: string) => void;
 }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [dragX, setDragX] = useState(0);
-  const canPortal =
-    typeof window !== 'undefined' && typeof document !== 'undefined';
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
@@ -170,63 +179,32 @@ const MobileMenu = ({
   };
 
   useEffect(() => {
-    // Lock body scroll when menu is open for mobile stability
     if (isOpen) {
-      const original = document.body.style.overflow;
+      const originalOverflow = document.body.style.overflow;
+      const originalPaddingRight = document.body.style.paddingRight;
+
+      const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
       document.body.style.overflow = 'hidden';
+      document.body.style.paddingRight = `${scrollbarWidth}px`;
+
       return () => {
-        document.body.style.overflow = original;
+        document.body.style.overflow = originalOverflow;
+        document.body.style.paddingRight = originalPaddingRight;
       };
     }
-    // No-op cleanup when closed to satisfy return type
-    return () => {};
+    return undefined;
   }, [isOpen]);
-
-  // Edge swipe to open menu (swipe from right edge when closed)
-  useEffect(() => {
-    if (isOpen || !canPortal) return;
-
-    let startX = 0;
-
-    const handleTouchStart = (e: TouchEvent) => {
-      const touch = e.touches[0];
-      startX = touch.clientX;
-      // Only trigger if starting near right edge (within 20px)
-      if (window.innerWidth - startX > 20) {
-        startX = 0;
-      }
-    };
-
-    const handleTouchMove = (e: TouchEvent) => {
-      if (!startX) return;
-      const touch = e.touches[0];
-      const deltaX = startX - touch.clientX;
-
-      // If swiping left from edge significantly (>50px), open menu
-      if (deltaX > 50) {
-        setIsOpen(true);
-        startX = 0;
-      }
-    };
-
-    window.addEventListener('touchstart', handleTouchStart, { passive: true });
-    window.addEventListener('touchmove', handleTouchMove, { passive: true });
-
-    return () => {
-      window.removeEventListener('touchstart', handleTouchStart);
-      window.removeEventListener('touchmove', handleTouchMove);
-    };
-  }, [isOpen, canPortal]);
   return (
     <>
       <button
         onClick={toggleMenu}
-        className="rounded-lg p-2 text-neutral-700 transition-colors duration-200 hover:bg-neutral-100 hover:text-neutral-900 focus:outline-none focus:ring-2 focus:ring-primary-400/50 dark:text-neutral-200 dark:hover:bg-slate-800 dark:hover:text-white"
+        className="relative z-[150] rounded-lg p-2 text-neutral-700 transition-colors duration-200 hover:bg-neutral-100 hover:text-neutral-900 focus:outline-none focus:ring-2 focus:ring-primary-400/50 dark:text-neutral-200 dark:hover:bg-slate-800 dark:hover:text-white"
         aria-label="Toggle mobile menu"
         aria-expanded={isOpen}
+        type="button"
       >
         <svg
-          className="h-5 w-5"
+          className="h-6 w-6"
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -242,57 +220,39 @@ const MobileMenu = ({
         </svg>
       </button>
 
-      {/* Mobile Menu via portal to escape transformed ancestors */}
-      {isOpen &&
-        canPortal &&
+      {mounted && isOpen &&
         createPortal(
-          <>
-            {/* Overlay */}
+          <div className="md:hidden">
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="fixed inset-0 z-[90] bg-black/35 backdrop-blur-sm md:hidden"
+              className="fixed inset-0 z-[90] bg-black/50 backdrop-blur-sm"
               onClick={toggleMenu}
+              aria-hidden="true"
             />
 
-            {/* Panel */}
             <motion.div
-              drag="x"
-              dragConstraints={{ left: 0, right: 300 }}
-              dragElastic={0.2}
-              onDragEnd={(e, info) => {
-                // Close menu if dragged right more than 100px or velocity > 500
-                if (info.offset.x > 100 || info.velocity.x > 500) {
-                  setIsOpen(false);
-                  setDragX(0);
-                } else {
-                  setDragX(0);
-                }
-              }}
-              onDrag={(e, info) => {
-                setDragX(info.offset.x);
-              }}
               initial={{ x: '100%' }}
-              animate={{ x: dragX > 0 ? dragX : 0 }}
+              animate={{ x: 0 }}
               exit={{ x: '100%' }}
-              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-              className="glass-strong fixed right-0 top-0 z-[100] h-dvh w-72 touch-pan-y overflow-y-auto overscroll-contain pb-[env(safe-area-inset-bottom)] pt-[env(safe-area-inset-top)] md:hidden"
-              style={{ cursor: dragX > 0 ? 'grabbing' : 'grab' }}
+              transition={{ type: 'spring', damping: 30, stiffness: 300 }}
+              className="glass-strong fixed right-0 top-0 z-[100] h-full w-72 overflow-y-auto overscroll-contain shadow-2xl"
             >
-              <div className="flex h-full flex-col p-6">
+              <div className="flex h-full flex-col p-6 pb-[calc(1.5rem+env(safe-area-inset-bottom))] pt-[calc(1.5rem+env(safe-area-inset-top))]">
                 <div className="mb-6 flex items-center justify-between border-b border-neutral-200 pb-4 dark:border-slate-800">
-                  <h2 className="text-base font-semibold text-neutral-900 dark:text-neutral-100">
+                  <h2 className="text-lg font-semibold text-neutral-900 dark:text-neutral-100">
                     Menu
                   </h2>
                   <button
                     onClick={toggleMenu}
-                    className="rounded-lg p-1.5 text-neutral-500 transition-colors duration-200 hover:bg-neutral-100 hover:text-neutral-700 focus:outline-none focus:ring-2 focus:ring-primary-400/50 dark:text-neutral-300 dark:hover:bg-slate-800 dark:hover:text-white"
+                    className="rounded-lg p-2 text-neutral-500 transition-colors duration-200 hover:bg-neutral-100 hover:text-neutral-700 focus:outline-none focus:ring-2 focus:ring-primary-400/50 dark:text-neutral-300 dark:hover:bg-slate-800 dark:hover:text-white"
                     aria-label="Close menu"
+                    type="button"
                   >
                     <svg
-                      className="h-5 w-5"
+                      className="h-6 w-6"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                     >
@@ -339,7 +299,7 @@ const MobileMenu = ({
                 </div>
               </div>
             </motion.div>
-          </>,
+          </div>,
           document.body
         )}
     </>

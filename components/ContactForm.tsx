@@ -16,7 +16,6 @@ interface ContactFormData {
 }
 
 const ContactForm = () => {
-  // Maintenance/temporary lock flag for the entire contact section
   const isLocked = true;
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<
@@ -249,6 +248,18 @@ const ContactForm = () => {
                   </a>
                 )}
 
+                {profile.social.tiktok && (
+                  <a
+                    href={profile.social.tiktok}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex h-10 w-10 items-center justify-center rounded-lg bg-neutral-100 text-neutral-600 transition-colors duration-200 hover:bg-primary-100 hover:text-primary-600 dark:bg-slate-800 dark:text-neutral-200 dark:hover:bg-primary-900/40 dark:hover:text-primary-200"
+                    aria-label="TikTok"
+                  >
+                    <SocialIcon name="tiktok" className="h-5 w-5" />
+                  </a>
+                )}
+
                 {profile.social.instagram && (
                   <a
                     href={profile.social.instagram}
@@ -289,6 +300,8 @@ const ContactForm = () => {
                           fill
                           className="object-contain"
                           aria-hidden="true"
+                          loading="lazy"
+                          quality={75}
                         />
                       </div>
                       <p className="text-sm font-semibold">
