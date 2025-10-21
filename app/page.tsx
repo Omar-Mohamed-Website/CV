@@ -8,7 +8,6 @@ import Hero from '../components/Hero';
 import PerformanceOptimizer from '../components/PerformanceOptimizer';
 import { usePullToTop } from '../hooks/useTouchGestures';
 
-// Lazy load components that are below the fold
 const About = dynamic(() => import('../components/About'), {
   loading: () => <div className="py-20 text-center">Loading...</div>,
 });
@@ -33,7 +32,6 @@ const ContactForm = dynamic(() => import('../components/ContactForm'), {
 const Footer = dynamic(() => import('../components/Footer'));
 
 export default function HomePage() {
-  // Enable pull-to-top gesture for mobile
   usePullToTop();
 
   return (
@@ -42,7 +40,6 @@ export default function HomePage() {
       <Header />
 
       <main id="main-content" className="relative">
-        {/* Hero Section */}
         <section
           id="hero"
           className="flex min-h-screen items-center justify-center"
@@ -50,37 +47,30 @@ export default function HomePage() {
           <Hero />
         </section>
 
-        {/* About Section */}
         <section id="about" className="py-20">
           <About />
         </section>
 
-        {/* Experience Section */}
         <section id="experience" className="py-20">
           <ExperienceTimeline />
         </section>
 
-        {/* Education Section */}
         <section id="education" className="py-20">
           <Education />
         </section>
 
-        {/* Skills Section */}
         <section id="skills" className="py-20">
           <Skills />
         </section>
 
-        {/* Certifications Section */}
         <section id="certifications" className="py-20">
           <Certifications />
         </section>
 
-        {/* Projects Section */}
         <section id="projects" className="py-20">
           <Projects />
         </section>
 
-        {/* Contact Section */}
         <section id="contact" className="py-20">
           <ContactForm />
         </section>

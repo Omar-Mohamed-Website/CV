@@ -17,7 +17,6 @@ const Footer = () => {
     <footer className="bg-slate-950 py-16 text-white">
       <div className="container-responsive">
         <div className="mb-12 grid gap-8 md:grid-cols-3">
-          {/* Brand and description */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -48,7 +47,6 @@ const Footer = () => {
             </div>
           </motion.div>
 
-          {/* Quick links */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -81,7 +79,6 @@ const Footer = () => {
             </nav>
           </motion.div>
 
-          {/* Connect section */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -95,7 +92,6 @@ const Footer = () => {
               Let&apos;s connect and build something amazing together.
             </p>
 
-            {/* Social media links */}
             <div className="mb-6 flex space-x-4">
               {profile.social.linkedin && (
                 <motion.a
@@ -139,8 +135,6 @@ const Footer = () => {
                 </motion.a>
               )}
 
-              {/* Twitter removed by request */}
-
               <motion.a
                 href={`mailto:${profile.email}`}
                 className="btn btn-sm rounded-md bg-slate-800 text-neutral-200 transition-all duration-200 hover:bg-primary-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2 focus:ring-offset-slate-950"
@@ -165,7 +159,6 @@ const Footer = () => {
               </motion.a>
             </div>
 
-            {/* Email for direct contact */}
             <a
               href={`mailto:${profile.email}`}
               className="-mx-2 inline-flex items-center rounded-md px-2 py-1 text-sm text-primary-800 transition-colors duration-200 hover:text-primary-900 focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2 focus:ring-offset-neutral-900 dark:text-primary-200 dark:hover:text-primary-100"
@@ -188,7 +181,6 @@ const Footer = () => {
           </motion.div>
         </div>
 
-        {/* Copyright Notice */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -218,9 +210,7 @@ const Footer = () => {
             </p>
           </div>
 
-          {/* Bottom section */}
           <div className="flex items-center justify-center md:justify-end">
-            {/* Back to top button */}
             <motion.button
               onClick={scrollToTop}
               className="flex items-center rounded-md px-3 py-2 text-sm text-neutral-400 transition-colors duration-200 hover:text-white focus:outline-none focus:ring-2 focus:ring-primary-300 focus:ring-offset-2 focus:ring-offset-neutral-900"

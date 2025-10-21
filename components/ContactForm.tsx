@@ -40,7 +40,7 @@ const ContactForm = () => {
     try {
       const formspreeEndpoint = process.env.NEXT_PUBLIC_FORMSPREE_ID
         ? `https://formspree.io/f/${process.env.NEXT_PUBLIC_FORMSPREE_ID}`
-        : `/api/contact`; // Fallback to API route if deployed on Vercel
+        : `/api/contact`;
 
       const response = await fetch(formspreeEndpoint, {
         method: 'POST',

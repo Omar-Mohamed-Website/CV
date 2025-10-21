@@ -7,8 +7,8 @@ interface TouchGestureOptions {
   onSwipeDown?: () => void;
   onSwipeLeft?: () => void;
   onSwipeRight?: () => void;
-  threshold?: number; // minimum distance in px to trigger swipe
-  velocityThreshold?: number; // minimum velocity to trigger swipe
+  threshold?: number;
+  velocityThreshold?: number;
 }
 
 export function useTouchGestures(
@@ -52,9 +52,7 @@ export function useTouchGestures(
       const velocityX = Math.abs(deltaX) / deltaTime;
       const velocityY = Math.abs(deltaY) / deltaTime;
 
-      // Determine primary direction
       if (Math.abs(deltaX) > Math.abs(deltaY)) {
-        // Horizontal swipe
         if (Math.abs(deltaX) > threshold || velocityX > velocityThreshold) {
           if (deltaX > 0) {
             onSwipeRight?.();
@@ -63,7 +61,6 @@ export function useTouchGestures(
           }
         }
       } else {
-        // Vertical swipe
         if (Math.abs(deltaY) > threshold || velocityY > velocityThreshold) {
           if (deltaY > 0) {
             onSwipeDown?.();
@@ -94,17 +91,12 @@ export function useTouchGestures(
   ]);
 }
 
-/**
- * Hook for pull-to-top gesture on page
- * When user is at top and pulls down, page bounces and scrolls to absolute top
- */
 export function usePullToTop() {
   useEffect(() => {
     let startY = 0;
     let isDragging = false;
 
     const handleTouchStart = (e: TouchEvent) => {
-      // Only activate if already at or near top
       if (window.scrollY < 100) {
         startY = e.touches[0].clientY;
         isDragging = true;
@@ -117,9 +109,7 @@ export function usePullToTop() {
       const currentY = e.touches[0].clientY;
       const deltaY = currentY - startY;
 
-      // If pulling down significantly when at top
       if (deltaY > 80 && window.scrollY === 0) {
-        // Add a subtle bounce effect
         document.body.style.transform = `translateY(${Math.min(deltaY * 0.3, 30)}px)`;
         document.body.style.transition = 'none';
       }
@@ -128,19 +118,17 @@ export function usePullToTop() {
     const handleTouchEnd = () => {
       if (!isDragging) return;
 
-      // Reset transform with spring animation
       document.body.style.transition =
         'transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)';
       document.body.style.transform = 'translateY(0)';
 
-      // Ensure we're at absolute top
       if (window.scrollY < 100) {
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }
 
       isDragging = false;
 
-      // Clean up transition after animation
+
       setTimeout(() => {
         document.body.style.transition = '';
       }, 400);

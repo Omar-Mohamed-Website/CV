@@ -36,7 +36,6 @@ const Education = () => {
               whileHover={{ scale: 1.02, y: -5 }}
               className="card flex h-full w-full flex-col"
             >
-              {/* Header with consistent layout */}
               <div className="mb-4 flex flex-col gap-3">
                 <h3 className="text-xl font-semibold leading-tight text-neutral-900 dark:text-neutral-100">
                   {edu.degree}
@@ -81,7 +80,6 @@ const Education = () => {
                 </p>
               )}
 
-              {/* Academic achievement indicator */}
               <div className="mt-auto border-t border-neutral-100 pt-4 dark:border-slate-700">
                 <div className="flex items-center text-sm font-medium text-neutral-700 dark:text-neutral-200">
                   <svg
