@@ -2,6 +2,10 @@
 
 import { useEffect } from 'react';
 
+/**
+ * Performance Optimizer Component
+ * Applies various performance optimizations to the application
+ */
 export default function PerformanceOptimizer() {
   useEffect(() => {
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');

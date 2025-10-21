@@ -223,6 +223,7 @@ const MobileMenu = ({
       {mounted && isOpen &&
         createPortal(
           <div className="md:hidden">
+            {/* Overlay */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -233,6 +234,7 @@ const MobileMenu = ({
               aria-hidden="true"
             />
 
+            {/* Panel */}
             <motion.div
               initial={{ x: '100%' }}
               animate={{ x: 0 }}

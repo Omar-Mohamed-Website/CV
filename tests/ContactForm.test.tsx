@@ -120,15 +120,12 @@ describe('ContactForm Component', () => {
   it('shows overlay and disables form when temporarily unavailable', () => {
     render(<ContactForm />);
 
-    // Overlay and warning box
     expect(screen.getByText(/temporarily unavailable\./i)).toBeInTheDocument();
 
-    // Inputs are disabled
     expect(screen.getByLabelText(/name/i)).toBeDisabled();
     expect(screen.getByLabelText(/email/i)).toBeDisabled();
     expect(screen.getByLabelText(/message/i)).toBeDisabled();
 
-    // Button reflects unavailable state
     const submitButton = screen.getByRole('button', { name: /unavailable/i });
     expect(submitButton).toBeDisabled();
   });
@@ -141,10 +138,6 @@ describe('ContactForm Component', () => {
       expect(fetch).not.toHaveBeenCalled();
     });
   });
-
-  // When locked, we skip network error/success scenarios as submission is disabled.
-
-  // Submitting state test isn't applicable when the form is locked.
 
   it('has accessible form labels and error messages', () => {
     render(<ContactForm />);

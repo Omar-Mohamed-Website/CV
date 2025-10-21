@@ -27,7 +27,6 @@ const Certifications = () => {
           .sort((a, b) => {
             const toTime = (d?: string) => {
               if (!d) return 0;
-              // Support YYYY-MM-DD, YYYY-MM, YYYY
               const parts = d.split('-');
               const y = parseInt(parts[0], 10);
               const m = parts[1] ? parseInt(parts[1], 10) - 1 : 11;
@@ -48,7 +47,6 @@ const Certifications = () => {
                 whileHover={{ scale: 1.02, y: -5 }}
                 className="card flex h-full flex-col"
               >
-                {/* Certificate icon */}
                 <div className="mb-4 flex items-start gap-4">
                   <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-primary-100 dark:bg-primary-900/30">
                     <svg
@@ -73,7 +71,6 @@ const Certifications = () => {
                   </div>
                 </div>
 
-                {/* Date pinned to bottom for alignment */}
                 <div className="mt-auto">
                   <span className="text-sm font-medium text-neutral-700 dark:text-neutral-300">
                     Issued:{' '}
@@ -91,7 +88,6 @@ const Certifications = () => {
                   )}
                 </div>
 
-                {/* Verification link */}
                 {cert.url && (
                   <div className="mt-auto">
                     <a
@@ -131,7 +127,6 @@ const Certifications = () => {
           ))}
       </div>
 
-      {/* Certifications stats */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}

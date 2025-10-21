@@ -32,7 +32,6 @@ const ContactForm = () => {
 
   const onSubmit = async (data: ContactFormData) => {
     if (isLocked) {
-      // Prevent submitting while the contact section is temporarily unavailable
       return;
     }
     setIsSubmitting(true);
@@ -94,7 +93,6 @@ const ContactForm = () => {
 
       <div className="mx-auto max-w-4xl">
         <div className="grid gap-12 md:grid-cols-2">
-          {/* Contact Information */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -193,7 +191,6 @@ const ContactForm = () => {
               </div>
             </div>
 
-            {/* Social links */}
             <div className="mt-8 border-t border-neutral-200 pt-8 dark:border-slate-700">
               <h4 className="mb-4 font-semibold text-neutral-900 dark:text-neutral-100">
                 Connect on Social Media
@@ -234,8 +231,6 @@ const ContactForm = () => {
                   </a>
                 )}
 
-                {/* Twitter removed by request */}
-
                 {profile.social.youtube && (
                   <a
                     href={profile.social.youtube}
@@ -275,7 +270,6 @@ const ContactForm = () => {
             </div>
           </motion.div>
 
-          {/* Contact Form */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -283,7 +277,6 @@ const ContactForm = () => {
             viewport={{ once: true }}
             className="card relative p-6"
           >
-            {/* Shade overlay and warning box - scoped ONLY to the form card */}
             {isLocked && (
               <>
                 <div
@@ -316,7 +309,6 @@ const ContactForm = () => {
               onSubmit={handleSubmit(onSubmit)}
               className="contact-form space-y-6"
             >
-              {/* Name field */}
               <div>
                 <label
                   htmlFor="name"
@@ -352,7 +344,6 @@ const ContactForm = () => {
                 )}
               </div>
 
-              {/* Email field */}
               <div>
                 <label
                   htmlFor="email"
@@ -388,7 +379,6 @@ const ContactForm = () => {
                 )}
               </div>
 
-              {/* Message field */}
               <div>
                 <label
                   htmlFor="message"
@@ -426,7 +416,6 @@ const ContactForm = () => {
                 )}
               </div>
 
-              {/* Honeypot field (hidden) */}
               <input
                 type="text"
                 {...register('honeypot')}
@@ -435,7 +424,6 @@ const ContactForm = () => {
                 autoComplete="off"
               />
 
-              {/* Submit button */}
               <motion.button
                 type="submit"
                 disabled={isSubmitting || isLocked}
@@ -491,7 +479,6 @@ const ContactForm = () => {
                 )}
               </motion.button>
 
-              {/* Submit status message */}
               {!isLocked && submitStatus !== 'idle' && (
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
